@@ -144,8 +144,9 @@ export default function Home() {
             <p className="eyebrow">Jovexa Learn</p>
             <h2>Learn to code, free forever</h2>
             <p className="section__lead">
-              Original beginner-friendly tutorials on HTML, CSS, JavaScript, Python, Git, and
-              Flutter, plus a live Code Lab that runs in your browser. No account needed.
+              Original beginner-friendly courses on HTML, CSS, JavaScript, Python, SQL, Git, and
+              Flutter, with exercises, quizzes, learning paths, and a live Code Lab that runs in
+              your browser. No account needed.
             </p>
             <div className="hero__actions">
               <Link className="btn btn--primary" to="/learn">

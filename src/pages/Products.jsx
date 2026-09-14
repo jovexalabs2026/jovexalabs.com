@@ -21,8 +21,8 @@ export default function Products() {
               <h2>{p.name}</h2>
               <p>{p.description}</p>
               <p className="badge">{p.status}</p>
-              <Link className="btn btn--secondary" to={`/products/${p.slug}`}>
-                Learn More
+              <Link className="btn btn--secondary" to={p.link || `/products/${p.slug}`}>
+                {p.cta || 'Learn More'}
               </Link>
             </article>
           ))}
