@@ -6,6 +6,10 @@ import Products from './pages/Products.jsx';
 import DashRush from './pages/DashRush.jsx';
 import Roadmap from './pages/Roadmap.jsx';
 import OpenSource from './pages/OpenSource.jsx';
+import Learn from './pages/Learn.jsx';
+import Course from './pages/Course.jsx';
+import Lesson from './pages/Lesson.jsx';
+import Playground from './pages/Playground.jsx';
 import Developers from './pages/Developers.jsx';
 import Contact from './pages/Contact.jsx';
 import Privacy from './pages/Privacy.jsx';
@@ -21,6 +25,10 @@ export default function App() {
         <Route path="products" element={<Products />} />
         <Route path="products/dash-rush" element={<DashRush />} />
         <Route path="roadmap" element={<Roadmap />} />
+        <Route path="learn" element={<Learn />} />
+        <Route path="learn/playground" element={<Playground />} />
+        <Route path="learn/:courseSlug" element={<Course />} />
+        <Route path="learn/:courseSlug/:lessonSlug" element={<Lesson />} />
         <Route path="open-source" element={<OpenSource />} />
         <Route path="developers" element={<Developers />} />
         <Route path="contact" element={<Contact />} />

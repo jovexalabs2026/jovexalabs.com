@@ -17,7 +17,7 @@ const CAPABILITIES = [
   },
   {
     title: 'Educational Technology',
-    text: 'Software that helps people learn, with approachable tools that make knowledge easier to reach.',
+    text: 'Free original tutorials and a live code playground through Jovexa Learn, our learning platform.',
   },
   {
     title: 'Open Source',
@@ -122,7 +122,7 @@ export default function Home() {
       <section className="section">
         <div className="feature-banner">
           <div>
-            <p className="eyebrow">Featured Product</p>
+            <p className="eyebrow">Our First Milestone of 2026</p>
             <h2>{featured.name}</h2>
             <p className="section__lead">{featured.description}</p>
             <p className="badge">{featured.status}</p>
@@ -134,6 +134,30 @@ export default function Home() {
           </div>
           <div className="feature-banner__visual" aria-hidden="true">
             <span className="feature-banner__glyph">▶</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="feature-banner">
+          <div>
+            <p className="eyebrow">Jovexa Learn</p>
+            <h2>Learn to code, free forever</h2>
+            <p className="section__lead">
+              Original beginner-friendly tutorials on HTML, CSS, JavaScript, Python, Git, and
+              Flutter, plus a live Code Lab that runs in your browser. No account needed.
+            </p>
+            <div className="hero__actions">
+              <Link className="btn btn--primary" to="/learn">
+                Browse Courses
+              </Link>
+              <Link className="btn btn--secondary" to="/learn/playground">
+                Open Code Lab
+              </Link>
+            </div>
+          </div>
+          <div className="feature-banner__visual" aria-hidden="true">
+            <span className="feature-banner__glyph">{'</>'}</span>
           </div>
         </div>
       </section>
