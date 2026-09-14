@@ -8,4 +8,15 @@ export const products = [
     status: 'In Testing · Coming Soon on Google Play',
     platforms: ['Android'],
   },
+  {
+    slug: 'jovexa-learn',
+    name: 'Jovexa Learn',
+    category: 'Educational Technology / Web Platform',
+    description:
+      'An open-source programming education platform with tutorials, examples, exercises, quizzes, and interactive coding tools. Free for everyone, no account needed.',
+    status: 'Live · Free',
+    platforms: ['Web'],
+    link: '/learn',
+    cta: 'Start Learning',
+  },
 ];

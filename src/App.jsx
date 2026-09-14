@@ -6,10 +6,18 @@ import Products from './pages/Products.jsx';
 import DashRush from './pages/DashRush.jsx';
 import Roadmap from './pages/Roadmap.jsx';
 import OpenSource from './pages/OpenSource.jsx';
+import LearnLayout from './components/learn/LearnLayout.jsx';
 import Learn from './pages/Learn.jsx';
 import Course from './pages/Course.jsx';
 import Lesson from './pages/Lesson.jsx';
+import CourseQuiz from './pages/CourseQuiz.jsx';
 import Playground from './pages/Playground.jsx';
+import Practice from './pages/Practice.jsx';
+import Paths from './pages/Paths.jsx';
+import Projects from './pages/Projects.jsx';
+import Reference from './pages/Reference.jsx';
+import MyLearning from './pages/MyLearning.jsx';
+import LearnCommunity from './pages/LearnCommunity.jsx';
 import Developers from './pages/Developers.jsx';
 import Contact from './pages/Contact.jsx';
 import Privacy from './pages/Privacy.jsx';
@@ -25,10 +33,19 @@ export default function App() {
         <Route path="products" element={<Products />} />
         <Route path="products/dash-rush" element={<DashRush />} />
         <Route path="roadmap" element={<Roadmap />} />
-        <Route path="learn" element={<Learn />} />
-        <Route path="learn/playground" element={<Playground />} />
-        <Route path="learn/:courseSlug" element={<Course />} />
-        <Route path="learn/:courseSlug/:lessonSlug" element={<Lesson />} />
+        <Route path="learn" element={<LearnLayout />}>
+          <Route index element={<Learn />} />
+          <Route path="playground" element={<Playground />} />
+          <Route path="practice" element={<Practice />} />
+          <Route path="paths" element={<Paths />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="reference" element={<Reference />} />
+          <Route path="my" element={<MyLearning />} />
+          <Route path="community" element={<LearnCommunity />} />
+          <Route path=":courseSlug" element={<Course />} />
+          <Route path=":courseSlug/quiz" element={<CourseQuiz />} />
+          <Route path=":courseSlug/:lessonSlug" element={<Lesson />} />
+        </Route>
         <Route path="open-source" element={<OpenSource />} />
         <Route path="developers" element={<Developers />} />
         <Route path="contact" element={<Contact />} />

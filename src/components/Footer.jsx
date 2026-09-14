@@ -20,8 +20,8 @@ const COLUMNS = [
     heading: 'Learn',
     links: [
       { to: '/learn', label: 'All Courses' },
-      { to: '/learn/html-basics', label: 'HTML Basics' },
-      { to: '/learn/javascript-basics', label: 'JavaScript' },
+      { to: '/learn/paths', label: 'Learning Paths' },
+      { to: '/learn/reference', label: 'Reference' },
       { to: '/learn/playground', label: 'Code Lab' },
     ],
   },
