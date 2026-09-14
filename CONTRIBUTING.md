@@ -81,5 +81,7 @@ be declined.
 
 ## License
 
-The repository license applies to all contributions. By submitting a pull
-request you agree to license your contribution under the same terms.
+This project is licensed under the MIT License (see the LICENSE file). By
+submitting a pull request you agree to license your contribution, including
+lesson content, under the same terms. The Jovexa Labs name, logo, and brand
+assets are trademarks and are not covered by the license.
