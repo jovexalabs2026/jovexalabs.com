@@ -5,7 +5,7 @@ export const products = [
     category: 'Mobile Game / Arcade / Endless Runner',
     description:
       'A fast-paced arcade endless runner focused on timing, jumping, movement, progression, and replayability. Family-friendly and built for quick, satisfying sessions.',
-    status: 'In Testing — Coming Soon on Google Play',
+    status: 'In Testing · Coming Soon on Google Play',
     platforms: ['Android'],
   },
 ];

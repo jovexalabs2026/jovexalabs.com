@@ -8,7 +8,7 @@ const CHANNELS = [
   },
   {
     title: 'Product Support',
-    text: 'Help with any Jovexa Labs app or game — bug reports, account questions, or feedback.',
+    text: 'Help with any Jovexa Labs app or game, including bug reports, account questions, and feedback.',
     email: 'support@jovexalabs.com',
   },
   {
@@ -27,7 +27,7 @@ export default function Contact() {
     <>
       <Seo
         title="Contact"
-        description="Get in touch with Jovexa Labs — general inquiries, product support, developer questions, and partnership opportunities."
+        description="Get in touch with Jovexa Labs for general inquiries, product support, developer questions, and partnership opportunities."
         path="/contact"
       />
 
@@ -64,7 +64,7 @@ export default function Contact() {
       </section>
 
       <section className="section section--narrow">
-        <h2>Before you write — quick answers</h2>
+        <h2>Quick answers</h2>
         <dl className="faq">
           <dt>When is Dash Rush releasing?</dt>
           <dd>

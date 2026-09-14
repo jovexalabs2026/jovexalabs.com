@@ -4,7 +4,7 @@ import Seo from '../components/Seo.jsx';
 const FEATURES = [
   {
     title: 'Endless Gameplay',
-    text: 'No finish line — just you, the track, and your best distance. Every run is a new challenge.',
+    text: 'No finish line. Just you, the track, and your best distance. Every run is a new challenge.',
   },
   {
     title: 'Reflex-Based Controls',
@@ -12,7 +12,7 @@ const FEATURES = [
   },
   {
     title: 'Progressive Difficulty',
-    text: 'The further you run, the faster and trickier it gets — the challenge grows with your skill.',
+    text: 'The further you run, the faster and trickier it gets. The challenge grows with your skill.',
   },
   {
     title: 'Built for Replay',
@@ -33,7 +33,7 @@ export default function DashRush() {
     <>
       <Seo
         title="Dash Rush: Endless Run & Jump"
-        description="Dash Rush: Endless Run & Jump is a fast-paced arcade endless runner by Jovexa Labs — quick reactions, perfect timing, endless challenge. Coming soon on Google Play."
+        description="Dash Rush: Endless Run & Jump is a fast-paced arcade endless runner by Jovexa Labs. Quick reactions, perfect timing, endless challenge. Coming soon on Google Play."
         path="/products/dash-rush"
       />
 
@@ -43,12 +43,12 @@ export default function DashRush() {
         <p className="hero__lead">Fast reflexes. Endless challenge.</p>
 
         <p>
-          Dash Rush is our flagship mobile game — an arcade-style endless runner built around
+          Dash Rush is our flagship mobile game, an arcade-style endless runner built around
           quick reactions, precise timing, and pure replayability. Keep moving forward, leap over
           obstacles, survive longer, and beat your best with every run.
         </p>
 
-        <p className="badge">Current Status: Testing — Preparing for Release on Google Play</p>
+        <p className="badge">Current Status: In Testing, Preparing for Release on Google Play</p>
       </section>
 
       <section className="section">
@@ -74,16 +74,16 @@ export default function DashRush() {
             <strong>Next:</strong> production release on Google Play.
           </li>
           <li>
-            <strong>After launch:</strong> content updates — new challenges, progression, and
+            <strong>After launch:</strong> content updates with new challenges, progression, and
             polish based on player feedback.
           </li>
         </ul>
 
         <h2>Our commitment to players</h2>
         <ul className="list">
-          <li>Fair, family-friendly gameplay — no dark patterns, no pay-to-win.</li>
+          <li>Fair, family-friendly gameplay with no dark patterns and no pay-to-win.</li>
           <li>Age-appropriate advertising configured for family audiences.</li>
-          <li>Minimal data collection — see our <Link to="/privacy">Privacy Policy</Link>.</li>
+          <li>Minimal data collection. See our <Link to="/privacy">Privacy Policy</Link>.</li>
           <li>Ongoing support and updates after launch.</li>
         </ul>
 

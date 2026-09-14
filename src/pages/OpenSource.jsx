@@ -6,7 +6,7 @@ export default function OpenSource() {
     <>
       <Seo
         title="Open Source"
-        description="Jovexa Labs supports open development — publishing selected tools, libraries, utilities, and educational projects publicly on GitHub."
+        description="Jovexa Labs supports open development by publishing selected tools, libraries, utilities, and educational projects publicly on GitHub."
         path="/open-source"
       />
 
@@ -18,8 +18,8 @@ export default function OpenSource() {
           tools, libraries, utilities, and educational projects publicly.
         </p>
         <p>
-          Not every Jovexa product is open source — availability depends on the individual
-          project — but our default is to share what can help others learn or build.
+          Not every Jovexa product is open source, and availability depends on the individual
+          project. Our default, however, is to share what can help others learn or build.
         </p>
       </section>
 
@@ -44,7 +44,7 @@ export default function OpenSource() {
             <h2>Contributing</h2>
             <p>
               Contribution guidelines are published per-repository. Check each project&apos;s
-              README and CONTRIBUTING file for how to get involved — issues, discussions, and
+              README and CONTRIBUTING file for how to get involved. Issues, discussions, and
               pull requests are welcome where enabled.
             </p>
           </div>
@@ -70,8 +70,8 @@ export default function OpenSource() {
         <p>
           Our first open-source releases are planned as part of our{' '}
           <Link to="/roadmap">2026–2027 roadmap</Link>: small, focused tools and libraries
-          extracted from our internal product work — the kind of utilities we wished existed when
-          we needed them.
+          extracted from our internal product work. They are the kind of utilities we wished
+          existed when we needed them.
         </p>
       </section>
     </>

@@ -6,7 +6,7 @@ export default function Developers() {
     <>
       <Seo
         title="Developers"
-        description="Developer resources from Jovexa Labs — repositories, documentation, releases, contribution guidelines, and future APIs and SDKs."
+        description="Developer resources from Jovexa Labs: repositories, documentation, releases, contribution guidelines, and future APIs and SDKs."
         path="/developers"
       />
 
@@ -14,7 +14,7 @@ export default function Developers() {
         <p className="eyebrow">Developers</p>
         <h1>For Developers</h1>
         <p className="hero__lead">
-          We build software with maintainability, transparency, and developer experience in mind —
+          We build software with maintainability, transparency, and developer experience in mind,
           and we share what we can.
         </p>
         <p>
@@ -67,7 +67,7 @@ export default function Developers() {
         <ul className="list">
           <li>Clean, readable code that the next developer can maintain.</li>
           <li>Automated builds and deployments through CI/CD pipelines.</li>
-          <li>Testing before release — unit tests, integration tests, and real devices.</li>
+          <li>Testing before release, including unit tests, integration tests, and real devices.</li>
           <li>Semantic, documented releases with clear changelogs.</li>
           <li>Privacy and security reviewed as part of every release, not after it.</li>
         </ul>
@@ -76,7 +76,7 @@ export default function Developers() {
         <p>
           Public APIs and SDKs are on our long-term <Link to="/roadmap">roadmap</Link> and will be
           introduced as our products mature. If you have a use case in mind, we would genuinely
-          like to hear it — <Link to="/contact">tell us about it</Link>.
+          like to hear it. <Link to="/contact">Tell us about it</Link>.
         </p>
       </section>
     </>

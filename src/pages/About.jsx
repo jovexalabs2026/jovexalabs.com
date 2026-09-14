@@ -8,7 +8,7 @@ const PRINCIPLES = [
   },
   {
     title: 'Keep technology accessible',
-    text: 'Good software should work for everyone — across devices, abilities, connection speeds, and budgets.',
+    text: 'Good software should work for everyone, across devices, abilities, connection speeds, and budgets.',
   },
   {
     title: 'Respect user privacy',
@@ -33,7 +33,7 @@ export default function About() {
     <>
       <Seo
         title="About"
-        description="Jovexa Labs is an independent software development studio building useful, accessible, and reliable digital products — apps, games, web platforms, and open-source software."
+        description="Jovexa Labs is an independent software development studio building useful, accessible, and reliable digital products: apps, games, web platforms, and open-source software."
         path="/about"
       />
 
@@ -43,13 +43,13 @@ export default function About() {
         <img
           className="brand-banner"
           src="/brand/banner.png"
-          alt="Jovexa Labs — Software, Ideas, Real Impact"
+          alt="Jovexa Labs: Software, Ideas, Real Impact"
           width="883"
           height="223"
         />
         <p className="hero__lead">
           Jovexa Labs is an independent software development studio. We take ideas, build them
-          carefully, and turn them into software that people can actually use — and enjoy using.
+          carefully, and turn them into software that people can actually use and enjoy.
         </p>
         <p>
           Operating under <strong>Jovexa Software Development Services</strong>, a registered
@@ -63,15 +63,15 @@ export default function About() {
       <section className="section section--narrow">
         <h2>Our mission</h2>
         <p>
-          To design and build software that is <strong>useful</strong> — it solves real problems,{' '}
-          <strong>accessible</strong> — anyone can pick it up and use it, and{' '}
-          <strong>dependable</strong> — it works today, tomorrow, and long after launch.
+          To design and build software that is <strong>useful</strong>, <strong>accessible</strong>,
+          and <strong>dependable</strong>. It should solve real problems, be simple for anyone to
+          pick up, and keep working today, tomorrow, and long after launch.
         </p>
 
         <h2>Our vision</h2>
         <p>
-          A growing family of high-quality products — games people love to play, apps people rely
-          on, and open tools developers build with — all created by a small, focused, independent
+          A growing family of high-quality products: games people love to play, apps people rely
+          on, and open tools developers build with, all created by a small, focused, independent
           studio that puts users first.
         </p>
 
@@ -112,19 +112,18 @@ export default function About() {
         <h2>Who we serve</h2>
         <ul className="list">
           <li>
-            <strong>Players</strong> — polished, fair, family-friendly games with no dark
-            patterns.
+            <strong>Players:</strong> polished, fair, family-friendly games with no dark patterns.
           </li>
           <li>
-            <strong>Everyday users</strong> — apps that respect your time, your device, and your
+            <strong>Everyday users:</strong> apps that respect your time, your device, and your
             privacy.
           </li>
           <li>
-            <strong>Learners</strong> — educational technology that makes knowledge easier to
+            <strong>Learners:</strong> educational technology that makes knowledge easier to
             reach.
           </li>
           <li>
-            <strong>Developers</strong> — open tools, honest documentation, and code worth reading.
+            <strong>Developers:</strong> open tools, honest documentation, and code worth reading.
           </li>
         </ul>
 

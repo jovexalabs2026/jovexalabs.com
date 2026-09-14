@@ -9,7 +9,7 @@ const CAPABILITIES = [
   },
   {
     title: 'Games',
-    text: 'Fast, polished arcade experiences built for replayability — starting with our flagship title, Dash Rush.',
+    text: 'Fast, polished arcade experiences built for replayability, starting with our flagship title, Dash Rush.',
   },
   {
     title: 'Web Platforms',
@@ -17,7 +17,7 @@ const CAPABILITIES = [
   },
   {
     title: 'Educational Technology',
-    text: 'Software that helps people learn — approachable tools that make knowledge easier to reach.',
+    text: 'Software that helps people learn, with approachable tools that make knowledge easier to reach.',
   },
   {
     title: 'Open Source',
@@ -32,7 +32,7 @@ const CAPABILITIES = [
 const VALUES = [
   {
     title: 'User-first',
-    text: 'Every product starts with a real problem worth solving — not technology looking for an excuse.',
+    text: 'Every product starts with a real problem worth solving, not technology looking for an excuse.',
   },
   {
     title: 'Privacy by default',
@@ -65,7 +65,7 @@ export default function Home() {
           <h1>Software built to turn ideas into impact.</h1>
           <p className="hero__lead">
             Jovexa Labs designs and develops modern applications, games, web platforms, developer
-            tools, and open-source software — built to be useful, accessible, and dependable for
+            tools, and open-source software, built to be useful, accessible, and dependable for
             everyone.
           </p>
           <div className="hero__actions">
@@ -155,8 +155,8 @@ export default function Home() {
         <div className="cta-panel">
           <h2>Have an idea, a question, or feedback?</h2>
           <p className="section__lead">
-            We read every message. Whether you are a player, a developer, or a future partner —
-            we would love to hear from you.
+            We read every message. Whether you are a player, a developer, or a future partner, we
+            would love to hear from you.
           </p>
           <div className="hero__actions hero__actions--center">
             <Link className="btn btn--primary" to="/contact">

@@ -8,7 +8,7 @@ const PHASES = [
     title: 'Foundation & first release',
     items: [
       'Launch of the official Jovexa Labs website and brand identity',
-      'Dash Rush: Endless Run & Jump — closed testing on Google Play',
+      'Closed testing of Dash Rush: Endless Run & Jump on Google Play',
       'Production release of Dash Rush on Google Play',
       'Establishing quality, privacy, and release standards for all future products',
     ],
@@ -18,7 +18,7 @@ const PHASES = [
     period: '2026 – 2027',
     title: 'Growth & expansion',
     items: [
-      'Post-launch content updates for Dash Rush — new challenges, progression, and polish',
+      'Post-launch content updates for Dash Rush with new challenges, progression, and polish',
       'A second mobile title, building on everything we learn from Dash Rush',
       'First open-source releases: small tools and libraries from our internal work',
       'Improved developer documentation and public project pages',
@@ -51,7 +51,7 @@ export default function Roadmap() {
         <h1>Goals &amp; Future Plans</h1>
         <p className="hero__lead">
           We build in the open where we can. This roadmap shows what we are working on today and
-          the direction we are heading — from our first game to a full family of software
+          the direction we are heading, from our first game to a full family of software
           products.
         </p>
       </section>
