@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Jovexa Labs develops modern mobile applications, games, web platforms, developer tools, and open-source software."
+    />
+    <title>Jovexa Labs | Software, Apps, Games & Open Technology</title>
+    <script>
+      // Restores the real path after the 404.html redirect (see public/404.html).
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var redirectedPath = params.get('p');
+        if (redirectedPath !== null) {
+          params.delete('p');
+          var rest = params.toString();
+          var newUrl =
+            window.location.pathname.replace(/\/$/, '') +
+            '/' + redirectedPath + (rest ? '?' + rest : '') + window.location.hash;
+          window.history.replaceState(null, '', newUrl);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
