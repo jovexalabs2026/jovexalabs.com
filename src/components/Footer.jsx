@@ -39,15 +39,13 @@ export default function Footer() {
       <div className="site-footer__inner">
         <div className="site-footer__brandcol">
           <p className="site-footer__brand">
-            <span className="brand__mark" aria-hidden="true">
-              J
-            </span>{' '}
+            <img className="brand__logo" src="/brand/logo-mark.png" alt="" aria-hidden="true" />{' '}
             Jovexa Labs
           </p>
-          <p className="site-footer__tagline">Software built to turn ideas into impact.</p>
+          <p className="site-footer__tagline">Software · Ideas · Real Impact</p>
           <p className="site-footer__tagline">
             Independent software studio building apps, games, web platforms, and open-source
-            tools.
+            tools. Build software for a brighter tomorrow.
           </p>
         </div>
 

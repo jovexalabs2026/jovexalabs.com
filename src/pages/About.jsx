@@ -40,6 +40,13 @@ export default function About() {
       <section className="section section--narrow">
         <p className="eyebrow">About</p>
         <h1>About Jovexa Labs</h1>
+        <img
+          className="brand-banner"
+          src="/brand/banner.png"
+          alt="Jovexa Labs — Software, Ideas, Real Impact"
+          width="883"
+          height="223"
+        />
         <p className="hero__lead">
           Jovexa Labs is an independent software development studio. We take ideas, build them
           carefully, and turn them into software that people can actually use — and enjoy using.

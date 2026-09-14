@@ -97,6 +97,11 @@ img {
   letter-spacing: 1px;
 }
 
+.brand__logo {
+  height: 38px;
+  width: auto;
+}
+
 .brand__mark {
   display: inline-flex;
   align-items: center;
@@ -250,6 +255,21 @@ img {
 .hero__visual {
   display: flex;
   justify-content: center;
+}
+
+.hero__logo {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  filter: drop-shadow(0 0 48px rgba(59, 130, 246, 0.45));
+}
+
+.brand-banner {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin: 20px 0;
 }
 
 .code-card {

@@ -92,11 +92,13 @@ export default function Home() {
           </ul>
         </div>
         <div className="hero__visual" aria-hidden="true">
-          <div className="code-card">
-            <span />
-            <span />
-            <span />
-          </div>
+          <img
+            className="hero__logo"
+            src="/brand/logo-mark.png"
+            alt=""
+            width="303"
+            height="396"
+          />
         </div>
       </section>
 

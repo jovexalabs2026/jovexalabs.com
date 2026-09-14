@@ -18,7 +18,7 @@ export default function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <NavLink to="/" className="brand" onClick={() => setOpen(false)}>
-          <span className="brand__mark">J</span>
+          <img className="brand__logo" src="/brand/logo-mark.png" alt="" aria-hidden="true" />
           <span className="brand__text">
             JOVEXA<span className="brand__sub">Labs</span>
           </span>
