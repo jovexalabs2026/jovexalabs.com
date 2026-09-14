@@ -58,6 +58,12 @@ export default function About() {
           <Link to="/products/dash-rush">Dash Rush: Endless Run &amp; Jump</Link>, is currently
           preparing for release on Google Play.
         </p>
+        <p className="fine-print">
+          Jovexa Software Development Services is registered with the Department of Trade and
+          Industry (DTI) of the Philippines, Business Name Registration Ref. EVQM270119612369. You
+          can verify business name registrations through the official DTI Business Name Registration
+          System.
+        </p>
       </section>
 
       <section className="section section--narrow">

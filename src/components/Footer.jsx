@@ -82,6 +82,9 @@ export default function Footer() {
           reserved.
         </p>
         <p className="site-footer__copy">
+          DTI-registered business in the Philippines · Reg. Ref. EVQM270119612369
+        </p>
+        <p className="site-footer__copy">
           <a href="mailto:admin@jovexalabs.com">admin@jovexalabs.com</a> ·{' '}
           <a href="mailto:support@jovexalabs.com">support@jovexalabs.com</a>
         </p>
