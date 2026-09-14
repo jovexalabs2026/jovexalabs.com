@@ -4,7 +4,8 @@ export const products = [
     name: 'Dash Rush: Endless Run & Jump',
     category: 'Mobile Game / Arcade / Endless Runner',
     description:
-      'A fast-paced arcade endless runner focused on timing, jumping, movement, progression, and replayability.',
-    status: 'In Development / Testing',
+      'A fast-paced arcade endless runner focused on timing, jumping, movement, progression, and replayability. Family-friendly and built for quick, satisfying sessions.',
+    status: 'In Testing — Coming Soon on Google Play',
+    platforms: ['Android'],
   },
 ];

@@ -39,10 +39,12 @@ export default function Seo({ title, description, path = '/' }) {
     setMeta('og:url', canonical, 'property');
     setMeta('og:type', 'website', 'property');
     setMeta('og:site_name', SITE_NAME, 'property');
+    setMeta('og:image', `${SITE_URL}/og-image.png`, 'property');
 
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', fullTitle);
     setMeta('twitter:description', description);
+    setMeta('twitter:image', `${SITE_URL}/og-image.png`);
   }, [title, description, path]);
 
   return null;

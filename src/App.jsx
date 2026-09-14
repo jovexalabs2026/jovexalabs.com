@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Products from './pages/Products.jsx';
 import DashRush from './pages/DashRush.jsx';
+import Roadmap from './pages/Roadmap.jsx';
 import OpenSource from './pages/OpenSource.jsx';
 import Developers from './pages/Developers.jsx';
 import Contact from './pages/Contact.jsx';
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="about" element={<About />} />
         <Route path="products" element={<Products />} />
         <Route path="products/dash-rush" element={<DashRush />} />
+        <Route path="roadmap" element={<Roadmap />} />
         <Route path="open-source" element={<OpenSource />} />
         <Route path="developers" element={<Developers />} />
         <Route path="contact" element={<Contact />} />
