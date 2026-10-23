@@ -17,7 +17,7 @@ function inspect(directory) {
   }
 }
 inspect('dist');
-for (const name of ['index.html', 'app-ads.txt', '_headers', '_redirects']) {
+for (const name of ['index.html', 'app-ads.txt', '_headers']) {
   if (!fs.existsSync(path.join('dist', name))) throw new Error(`Missing output: ${name}`);
 }
 console.log(`Static output checked: ${count} files; no matched private-file or credential patterns.`);

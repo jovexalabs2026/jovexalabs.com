@@ -19,8 +19,10 @@ http.createServer((request, response) => {
   if (file !== root && !file.startsWith(root + path.sep)) {
     response.writeHead(403).end('Access denied'); return;
   }
+  if (!fs.existsSync(file) && fs.existsSync(`${file}.html`)) file += '.html';
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) file = path.join(root, 'index.html');
-  for (const rule of rules.filter((item) => item.route === '/*' || item.route === pathname)) {
+  for (const rule of rules.filter((item) => item.route === pathname ||
+    (item.route.endsWith('*') && pathname.startsWith(item.route.slice(0, -1))))) {
     for (const header of rule.headers) {
       if (header.startsWith('! ')) response.removeHeader(header.slice(2));
       else {

@@ -57,7 +57,8 @@ deployed preview, set `STATIC_BASE_URL` to its HTTPS origin before running `npm 
 
 Cloudflare Pages direct upload uses only the **contents of `dist`**, after `npm run build:pages`.
 The preparation removes GitHub-only CNAME/404 files from output, without editing their source.
-The native SPA rewrite preserves deep links. `_headers` applies main-app restrictions and a
+Native Pages SPA fallback preserves deep links; there is no catch-all `_redirects` rule, which
+would override existing JavaScript assets. `_headers` applies main-app restrictions and a
 separate opaque-origin, no-network Code Lab sandbox. Do not deploy the code-preview response to
 a host that ignores these headers without equivalent sandbox/CSP configuration.
 The main app disallows inline scripts; inline styles remain allowed for the preserved React

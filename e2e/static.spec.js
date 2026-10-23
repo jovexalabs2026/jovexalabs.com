@@ -68,7 +68,14 @@ test('security headers protect main app and separately sandbox the preview', asy
   expect(response.headers()['content-security-policy']).toContain("script-src 'self'");
   expect(response.headers()['x-content-type-options']).toBe('nosniff');
   expect(response.headers()['x-robots-tag']).toContain('noindex');
-  const preview = await request.get('/code-preview.html');
+  const preview = await request.get('/code-preview');
   expect(preview.headers()['content-security-policy']).toContain('sandbox allow-scripts');
   expect(preview.headers()['content-security-policy']).toContain("connect-src 'none'");
+  expect(await preview.text()).toContain('/code-preview.js');
+  const html = await response.text();
+  const assetPath = html.match(/src="([^"]+\/assets\/[^"]+\.js)"/)?.[1] ??
+    html.match(/src="(\/assets\/[^"]+\.js)"/)?.[1];
+  expect(assetPath).toBeTruthy();
+  const asset = await request.get(assetPath);
+  expect(asset.headers()['content-type']).toMatch(/javascript/);
 });

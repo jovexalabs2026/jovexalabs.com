@@ -163,7 +163,7 @@ export default function Playground() {
               className="playground__result"
               title="Code result"
               sandbox="allow-scripts allow-modals"
-              src={`/code-preview.html#${encodeURIComponent(output)}`}
+              src={`/code-preview#${encodeURIComponent(output)}`}
             />
           </div>
         </div>
