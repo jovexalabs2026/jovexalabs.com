@@ -72,8 +72,8 @@ export default function Home() {
             <Link className="btn btn--primary" to="/products">
               Explore Products
             </Link>
-            <Link className="btn btn--secondary" to="/roadmap">
-              Our Roadmap
+            <Link className="btn btn--secondary" to="/digital2030">
+              Discover Digital 2030
             </Link>
           </div>
           <ul className="hero__stats" aria-label="Quick facts">

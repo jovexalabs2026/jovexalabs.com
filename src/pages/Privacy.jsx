@@ -20,6 +20,13 @@ export default function Privacy() {
 
         <h2>Information We Collect</h2>
         <p>
+          Digital 2030 business drafts and message-warning checks run in your browser without
+          sending their inputs to a server. Do not include private data. Learning progress and
+          Code Lab drafts use browser storage and are not synchronized to an account.
+          This public release has no live AI provider or account-backed business verification.
+          Hosting providers may process ordinary request metadata under their own policies.
+        </p>
+        <p>
           Some Jovexa applications and this website may collect limited information necessary to
           provide and improve our services. We do not collect more information than is reasonably
           needed for the stated purpose.

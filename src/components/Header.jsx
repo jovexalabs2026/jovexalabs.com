@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { to: '/about', label: 'About' },
   { to: '/products', label: 'Products' },
   { to: '/learn', label: 'Learn' },
+  { to: '/digital2030', label: 'Digital 2030' },
   { to: '/roadmap', label: 'Roadmap' },
   { to: '/open-source', label: 'Open Source' },
   { to: '/developers', label: 'Developers' },

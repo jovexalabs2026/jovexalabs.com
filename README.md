@@ -43,6 +43,43 @@ Deployment to GitHub Pages is automated via [.github/workflows/deploy.yml](.gith
 on every push to `main`. The custom domain is configured via `public/CNAME` (`jovexalabs.com`),
 which is copied into the build output automatically.
 
+## Limited Digital 2030 public release
+
+The `release/digital2030-static` branch adds public education links, an official-agency directory,
+local message-warning heuristics, and browser-only business drafts. It preserves corporate pages,
+products, and existing Jovexa Learn resources. Live AI, accounts, authoritative completion
+certificates, private PHBIN operations, document uploads, and administration are unavailable.
+This is not the production launch of the separate authenticated PHBIN/Next.js application.
+
+Validate with `npm run lint`, `npm test`, `npm run build:pages`, and `npm run test:e2e`.
+The browser suite requires `npx playwright install chromium`. To repeat smoke tests against a
+deployed preview, set `STATIC_BASE_URL` to its HTTPS origin before running `npm run test:e2e`.
+
+Cloudflare Pages direct upload uses only the **contents of `dist`**, after `npm run build:pages`.
+The preparation removes GitHub-only CNAME/404 files from output, without editing their source.
+The native SPA rewrite preserves deep links. `_headers` applies main-app restrictions and a
+separate opaque-origin, no-network Code Lab sandbox. Do not deploy the code-preview response to
+a host that ignores these headers without equivalent sandbox/CSP configuration.
+The main app disallows inline scripts; inline styles remain allowed for the preserved React
+components and lesson UI. Only the sandboxed Code Lab permits learner-written inline scripts.
+The preview is marked noindex; existing canonical URLs still identify jovexalabs.com.
+Browser-only inputs are not sent or saved; existing learning progress and Code Lab autosave
+remain localStorage-based, device-only, and removable by clearing browser data.
+Pure tool logic is adapted from the existing unified platform implementation.
+
+The Pages preview does not connect a custom domain or change nameservers, MX, SPF, DKIM, or DMARC.
+No paid resource is required for this static upload. Free-tier limitations and provider account
+terms still apply. Deployment is manual; GitHub CI validates the branch but does not release it.
+Do not push/merge to `main` to deploy the preview: that would trigger the existing GitHub Pages
+workflow for the live corporate domain.
+
+Rollback: use the prior Pages deployment if available, or redeploy a previously validated
+static build. The unchanged corporate `main` / GitHub Pages deployment is independent.
+There is no production database or private-document storage in this static release to restore.
+No disaster-recovery claim is made for the separate backend. Domain cutover requires a full DNS
+backup and explicit approval, preserving mail records. Legal/privacy/retention and Philippine
+professional review remain required; technical deployment is not legal compliance.
+
 ## Repository Structure
 
 ```

@@ -23,6 +23,8 @@ import Contact from './pages/Contact.jsx';
 import Privacy from './pages/Privacy.jsx';
 import Terms from './pages/Terms.jsx';
 import NotFound from './pages/NotFound.jsx';
+import { DigitalLayout, DigitalHome, DigitalAI, DigitalEducation, DigitalServices,
+  DigitalSafety, DigitalBusiness, DigitalActivity } from './pages/Digital2030.jsx';
 
 export default function App() {
   return (
@@ -51,6 +53,15 @@ export default function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />
+        <Route path="digital2030" element={<DigitalLayout />}>
+          <Route index element={<DigitalHome />} />
+          <Route path="ai" element={<DigitalAI />} />
+          <Route path="education" element={<DigitalEducation />} />
+          <Route path="services" element={<DigitalServices />} />
+          <Route path="cybersecurity" element={<DigitalSafety />} />
+          <Route path="business" element={<DigitalBusiness />} />
+          <Route path="impact" element={<DigitalActivity />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
