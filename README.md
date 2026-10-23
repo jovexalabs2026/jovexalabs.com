@@ -56,6 +56,9 @@ The browser suite requires `npx playwright install chromium`. To repeat smoke te
 deployed preview, set `STATIC_BASE_URL` to its HTTPS origin before running `npm run test:e2e`.
 
 Cloudflare Pages direct upload uses only the **contents of `dist`**, after `npm run build:pages`.
+On Windows, use `powershell -NoProfile -File tool\package-pages.ps1 -Destination <absolute-zip-path>`
+to create the upload ZIP. Do not use `Compress-Archive`: its backslash entry names are interpreted
+as literal asset names by the dashboard uploader, breaking nested JavaScript/image URLs.
 The preparation removes GitHub-only CNAME/404 files from output, without editing their source.
 Native Pages SPA fallback preserves deep links; there is no catch-all `_redirects` rule, which
 would override existing JavaScript assets. `_headers` applies main-app restrictions and a
