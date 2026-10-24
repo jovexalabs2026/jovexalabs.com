@@ -1,4 +1,5 @@
 .atlas {
+  font-family: 'Mona Sans Variable', ui-sans-serif, sans-serif;
   --atlas-ocean: #081822;
   --atlas-land: #25424b;
   --atlas-grid: #32606e;
@@ -131,6 +132,31 @@
 .atlas-mission { border-top: 1px solid var(--atlas-edge); padding: 12px 0; }
 .atlas-answer, .atlas-filter-note { padding: 12px; background: #193a35; border: 1px solid #5c9781; border-radius: 8px; }
 .atlas-reopen-dossier { position: absolute; top: 16px; right: 18px; z-index: 3; max-width: 250px; }
+.atlas-tool-panel--news { width: min(740px, calc(100vw - 430px)); bottom: 18px; z-index: 4; }
+.atlas-news-heading { display: flex; justify-content: space-between; gap: 12px; align-items: center; clear: both; }
+.atlas-news-heading h2 { margin-bottom: 0; font-size: 20px; letter-spacing: -.04em; }
+.atlas-feed-badge { white-space: nowrap; padding: 5px 8px; font-size: 9px; color: #b1f2df; border: 1px solid #457d76; border-radius: 20px; }
+.atlas-news > p { font-size: 11px; }
+.atlas-news-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
+.atlas-news-card { border: 1px solid #385561; border-radius: 11px; overflow: hidden; background: #0a1c29; }
+.atlas-news-card-body { padding: 12px; }
+.atlas-news-card h3 { font-size: 12px; line-height: 1.5; font-weight: 650; margin: 10px 0 16px; }
+.atlas-news-card small { font-size: 9px; color: #9db9c4; }
+.atlas-news-card a { font-size: 10px; display: inline-block; line-height: 1.6; }
+.atlas-news-art { height: 100px; position: relative; overflow: hidden; background: linear-gradient(135deg, #103d4b, #0d192d); padding: 12px; }
+.atlas-news-art > span:first-child { position: relative; z-index: 1; font-size: 8px; letter-spacing: .1em; color: #b7d8e7; }
+.atlas-news-orbit { position: absolute; width: 110px; height: 110px; border: 1px solid #79c5cf; border-radius: 50%; right: -10px; top: 25px; box-shadow: 0 0 0 18px #79c5cf0a, 0 0 0 36px #79c5cf08; transform: rotate(-30deg) scaleY(.6); }
+.atlas-news-art--1 { background: linear-gradient(135deg, #24343b, #18243d); }
+.atlas-news-art--2 { background: linear-gradient(135deg, #244333, #112b37); }
+.atlas-news-privacy, .atlas-reading-rules { padding: 10px; border: 1px solid #3b5965; border-radius: 8px; }
+.atlas-news-error { border: 1px solid #bb8261; background: #3b291f; padding: 12px; border-radius: 9px; color: #ffe4c5 !important; }
+.atlas-news-filters { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.atlas-news-filters label { flex: 1; min-width: 160px; }
+.atlas-news-filters [role=group] { display: flex; gap: 5px; }
+.atlas-reading { padding: 14px; border: 1px solid #73bfac; border-radius: 12px; margin: 14px 0; background: #123735; }
+.atlas-reading label { display: flex; align-items: start; gap: 8px; line-height: 1.6; margin-bottom: 12px; }
+.atlas-reading button { margin: 0 8px 4px 0; }
+.atlas-reading-done { color: #a5e8c8 !important; font-size: 10px; }
 .atlas--panel-closed .atlas-map-hint { left: 88px; }
 .atlas--dossier-closed .atlas-map-hint { right: 280px; }
 .atlas--day { --atlas-ocean: #bed8df; --atlas-land: #6e9f9a; --atlas-grid: #628f9b; }
@@ -157,6 +183,8 @@
   .atlas-sidebar nav { position: relative; top: auto; left: auto; width: auto; grid-template-columns: repeat(4, 1fr); padding: 12px; }
   .atlas-sidebar nav button { flex-direction: row; justify-content: center; font-size: 10px; }
   .atlas-tool-panel { position: relative; inset: auto; margin: 0 12px 12px; width: auto; max-height: 400px; }
+  .atlas-tool-panel--news { width: auto; max-height: 680px; }
+  .atlas-news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .atlas-region-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .atlas-region-list span { padding-left: 0; }
   .atlas-dossier { position: relative; inset: auto; order: 2; margin: 0 12px 12px; width: auto; max-height: 520px; }
@@ -164,6 +192,7 @@
   .atlas--panel-closed .atlas-map-hint, .atlas--dossier-closed .atlas-map-hint { left: 16px; right: 16px; }
 }
 @media (max-width: 420px) {
+  .atlas-news-grid { grid-template-columns: 1fr; }
   .atlas h1 { font-size: 18px; }
   .atlas-tool-icon { display: none; }
   .atlas-map-pane { height: 480px; }

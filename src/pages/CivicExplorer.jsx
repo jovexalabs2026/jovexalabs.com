@@ -5,6 +5,8 @@ import { CIVIC_LAYERS, CIVIC_REGIONS, CIVIC_MISSIONS, projectCoordinate,
   filterRegions, mapViewport } from '../data/civic-explorer.js';
 import { CIVIC_FLAGS } from '../data/civic-flags.js';
 import { createCivicMap, normalizeGlobeCenter } from '../lib/civic-map.js';
+import CivicNews from '../components/CivicNews.jsx';
+import '@fontsource-variable/mona-sans/wght.css';
 import './civic-explorer.css';
 
 export default function CivicExplorer() {
@@ -90,19 +92,19 @@ export default function CivicExplorer() {
         <div className="atlas-header-links"><Link to="/">Jovexa home</Link>
           <Link to="/prototype/community">Orbit demo</Link></div>
       </header>
-      <p className="atlas-disclosure"><strong>ILLUSTRATIVE PROTOTYPE — NOT LIVE DATA.</strong> Pins represent
+      <p className="atlas-disclosure"><strong>MAP: SAMPLE DATA / NEWS: ON-DEMAND PUBLISHER RSS.</strong> Pins represent
         selected capitals, not active projects, incidents, people, or verified services. No military
-        tracking, location collection, news ingestion, navigation, or financial rewards.</p>
+        tracking, location collection, navigation, or financial rewards.</p>
       <div className="atlas-workspace">
         <aside className="atlas-sidebar" aria-label="Explorer tools and results">
           <nav aria-label="Explorer tools">
-            {[['regions', 'Regions', 'R'], ['layers', 'Layers', 'L'], ['feed', 'Sample feed', 'F'], ['about', 'Sources', 'i']].map(([id, title, icon]) =>
+            {[['regions', 'Regions', 'R'], ['layers', 'Layers', 'L'], ['feed', 'Live news', 'N'], ['about', 'Sources', 'i']].map(([id, title, icon]) =>
               <button type="button" key={id} aria-current={panel === id ? 'page' : undefined}
                 aria-expanded={panel === id && panelOpen} aria-controls="atlas-tool-panel"
                 onClick={() => { setPanel(id); setPanelOpen(panel !== id || !panelOpen); }}>
                 <span className="atlas-tool-icon" aria-hidden="true">{icon}</span>{title}</button>)}
           </nav>
-          <div id="atlas-tool-panel" hidden={!panelOpen} className="atlas-tool-panel">
+          <div id="atlas-tool-panel" hidden={!panelOpen} className={`atlas-tool-panel ${panel === 'feed' ? 'atlas-tool-panel--news' : ''}`}>
           <button className="atlas-panel-close" type="button" aria-label="Close tools panel"
             onClick={() => setPanelOpen(false)}>Close</button>
           {panel === 'regions' && <section>
@@ -123,14 +125,7 @@ export default function CivicExplorer() {
               <span>{layer.name}</span></label>)}
             <p>{visible.length} sample pins visible</p>
           </section>}
-          {panel === 'feed' && <section>
-            <h2>Sample editorial feed</h2><p>These are original example prompts, not reported news, live events, or third-party articles.</p>
-            {CIVIC_REGIONS.slice(0, 4).map((item) => <article className="atlas-feed" key={item.id}>
-              <small>SAMPLE / NO EVENT DATE</small><h3>{item.name}: {item.focus}</h3>
-              <p>Explore how a civic-learning resource could help residents find trustworthy information.</p>
-              <button type="button" onClick={() => choose(item.id)}>Open {item.name} dossier</button>
-            </article>)}
-          </section>}
+          <div hidden={panel !== 'feed'}><CivicNews active={panel === 'feed' && panelOpen} /></div>
           {panel === 'about' && <section>
             <h2>Sources and limits</h2>
             <p>Land geometry: <a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener noreferrer">Natural Earth public-domain data</a>,
@@ -148,7 +143,12 @@ export default function CivicExplorer() {
             <p>Official homepage links are starting points, not integrations, endorsements, or
               availability guarantees. Confirm information independently.</p>
             <p>No map tiles, trackers, location permission, private APIs, accounts, or server storage.
-              Search, filters, and mission answers stay in page memory and reset on reload.</p>
+              Live news is fetched only when requested, directly from NASA's official RSS endpoint.
+              Only headlines, dates and original links are shown. NASA receives the reader's IP address.
+              This is science news, not a regional intelligence feed or endorsement.</p>
+            <p>Mona Sans is self-hosted under the SIL Open Font License; see
+              <a href="/atlas-font-license.txt"> font license</a>. Search, filters, mission answers
+              and self-reported reading completions reset on reload.</p>
           </section>}
           </div>
         </aside>

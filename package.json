@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/mona-sans": "^5.2.0",
     "d3-geo": "^3.1.1",
     "flag-icons": "^7.6.0",
     "react": "^19.2.8",

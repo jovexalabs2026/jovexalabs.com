@@ -59,6 +59,14 @@ export default function Privacy() {
 
         <h2>Third-Party Services</h2>
         <p>
+          In the Atlas preview, choosing "Load live headlines" contacts NASA&apos;s official RSS
+          endpoint directly. NASA receives your IP address and ordinary browser request metadata;
+          this request omits credentials and referrer. Opening an article visits NASA under its
+          own policies. The map does not request your location. Reading timers and self-reported
+          completions are kept only in page memory, reset on reload, and are not verified reading
+          or account rewards. Fonts and national flag assets are self-hosted.
+        </p>
+        <p>
           Jovexa applications may rely on third-party services such as Google Play Services,
           Google AdMob, analytics providers, and crash reporting tools. Each third-party service
           operates under its own privacy policy.

@@ -5,7 +5,7 @@ test('world map renders local geography and search selects a regional dossier', 
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/prototype/explorer');
   await expect(page.getByRole('heading', { name: 'Atlas Civic Explorer' })).toBeVisible();
-  await expect(page.locator('.atlas-disclosure')).toContainText('NOT LIVE DATA');
+  await expect(page.locator('.atlas-disclosure')).toContainText('MAP: SAMPLE DATA');
   await expect(page.locator('.atlas-land')).toHaveAttribute('d', /^M/);
   await expect(page.getByRole('button', { name: /^Explore / })).toHaveCount(10);
   await page.getByLabel('Search country, capital, or continent').fill('Canada');
@@ -51,9 +51,7 @@ test('map controls change bounded viewport and reset, with day and night themes'
 
 test('feed and missions are illustrative, with no reward and no retained answers', async ({ page }) => {
   await page.goto('/prototype/explorer');
-  await page.getByRole('button', { name: 'Sample feed', exact: true }).click();
-  await expect(page.getByText('These are original example prompts', { exact: false })).toBeVisible();
-  await page.getByRole('button', { name: 'Open Germany dossier' }).click();
+  await page.locator('.atlas-region-list').getByRole('button', { name: /Germany Berlin/ }).click();
   await expect(page.getByRole('heading', { name: 'Germany', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Missions', exact: true }).click();
   await expect(page.getByText('No timer payout, token, or account credit.', { exact: false })).toBeVisible();
@@ -82,7 +80,7 @@ test('all explorer panels fit mobile, tablet and desktop without external data o
     await page.setViewportSize({ width, height: 900 });
     await page.getByRole('button', { name: '3D globe', exact: true }).click();
     await expect(page.getByRole('button', { name: '3D globe', exact: true })).toHaveAttribute('aria-pressed', 'true');
-    for (const name of ['Regions', 'Layers', 'Sample feed', 'Sources']) {
+    for (const name of ['Regions', 'Layers', 'Live news', 'Sources']) {
       await page.getByRole('navigation', { name: 'Explorer tools' }).getByRole('button', { name, exact: true }).click();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     }

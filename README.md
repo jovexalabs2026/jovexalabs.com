@@ -101,11 +101,34 @@ The prototype disclosure remains visible. This is an original interface, not a p
 copy of a third-party product. It has 2D/3D mode selection,
 pan/zoom/reset, mouse/touch drag and keyboard globe rotation, day/night styling,
 country/capital/continent search, three example layers, region dossiers,
-official-homepage links, original sample editorial prompts, and learning-answer reveals.
-It is not a live news, emergency, navigation, intelligence, or financial product.
+official-homepage links, on-demand official NASA RSS headlines, and learning-answer reveals.
+It is not a global breaking-news, emergency, navigation, intelligence, or financial product.
 Only ten curated capital markers are interactive; they do not imply active local projects.
-No accounts, geolocation, map-tile requests, tracking, or external data feeds are used.
+No accounts, geolocation, map-tile requests, or tracking are used.
 Selection and answers live only in page memory, not Orbit points or localStorage.
+
+The news panel is a live, opt-in browser integration with `https://www.nasa.gov/feed/`, not a
+global or country-specific news aggregator. The publisher currently supplies GET CORS access.
+Only titles, publication dates, publisher attribution and official article URLs are displayed;
+no article bodies, third-party images, NASA branding or implied endorsement are republished.
+Original card artwork is decorative. Publisher terms:
+https://www.nasa.gov/nasa-brand-center/images-and-media/ (reviewed October 24, 2026).
+Clicking load discloses the direct third-party request first; requests omit credentials/referrer.
+CSP explicitly allows only the official feed path in addition to same-origin requests.
+No third-party proxy, API key, paid service, or new backend resource is needed.
+Publisher/CORS/availability changes can break the feed; errors are visible and never replaced
+with fabricated headlines. Manual refresh is limited to once per minute per page, requests
+time out after 12 seconds, XML bodies are bounded at 1 MiB, article links are HTTPS-host
+allowlisted, and malformed or unsafe feeds fail explicitly. Refresh failure retains old
+headlines with a warning; fetch/publication dates and stale notices identify freshness limits.
+
+Reading activities are non-financial and page-memory-only: one active article, open the
+source link, wait 30 seconds on a monotonic timer, check a self-report box, then mark complete.
+We cannot verify a popup opened or any reading occurred. No token, points, money, account
+credit or learning certification is issued; duplicates are blocked in page memory only.
+Cancel abandons the active timer. Reload resets completions; this is not an anti-fraud ledger.
+Self-hosted Mona Sans comes from Fontsource under SIL OFL; its notice ships as
+`public/atlas-font-license.txt`. No Sible font files, article assets or activation code are used.
 
 Worldwide land geometry is Natural Earth public-domain data from the ISC-licensed
 `world-atlas` package, decoded by ISC-licensed `topojson-client` and projected with `d3-geo`.
