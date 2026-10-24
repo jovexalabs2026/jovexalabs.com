@@ -19,10 +19,14 @@ import Reference from './pages/Reference.jsx';
 import MyLearning from './pages/MyLearning.jsx';
 import LearnCommunity from './pages/LearnCommunity.jsx';
 import Developers from './pages/Developers.jsx';
+import DeveloperDocs, { DeveloperProjects } from './pages/DeveloperDocs.jsx';
+import ProjectDetails from './pages/ProjectDetails.jsx';
 import Contact from './pages/Contact.jsx';
 import Privacy from './pages/Privacy.jsx';
 import Terms from './pages/Terms.jsx';
 import NotFound from './pages/NotFound.jsx';
+import { DigitalLayout, DigitalHome, DigitalAI, DigitalEducation, DigitalServices,
+  DigitalSafety, DigitalBusiness, DigitalActivity } from './pages/Digital2030.jsx';
 
 export default function App() {
   return (
@@ -32,6 +36,7 @@ export default function App() {
         <Route path="about" element={<About />} />
         <Route path="products" element={<Products />} />
         <Route path="products/dash-rush" element={<DashRush />} />
+        <Route path="products/:projectSlug" element={<ProjectDetails />} />
         <Route path="roadmap" element={<Roadmap />} />
         <Route path="learn" element={<LearnLayout />}>
           <Route index element={<Learn />} />
@@ -48,9 +53,20 @@ export default function App() {
         </Route>
         <Route path="open-source" element={<OpenSource />} />
         <Route path="developers" element={<Developers />} />
+        <Route path="developers/docs" element={<DeveloperDocs />} />
+        <Route path="developers/projects" element={<DeveloperProjects />} />
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />
+        <Route path="digital2030" element={<DigitalLayout />}>
+          <Route index element={<DigitalHome />} />
+          <Route path="ai" element={<DigitalAI />} />
+          <Route path="education" element={<DigitalEducation />} />
+          <Route path="services" element={<DigitalServices />} />
+          <Route path="cybersecurity" element={<DigitalSafety />} />
+          <Route path="business" element={<DigitalBusiness />} />
+          <Route path="impact" element={<DigitalActivity />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

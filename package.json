@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node tool/check-static-build.mjs",
     "lint": "oxlint",
+    "test": "node --test tests/*.test.js",
+    "test:e2e": "playwright test",
+    "build:pages": "npm run build && node tool/prepare-pages.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,6 +18,7 @@
     "react-router-dom": "^7.18.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",

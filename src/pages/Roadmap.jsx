@@ -21,7 +21,7 @@ const PHASES = [
       'Post-launch content updates for Dash Rush with new challenges, progression, and polish',
       'A second mobile title, building on everything we learn from Dash Rush',
       'First open-source releases: small tools and libraries from our internal work',
-      'Improved developer documentation and public project pages',
+      'Completed: developer documentation and public project pages (October 2026)',
     ],
   },
   {
@@ -80,6 +80,14 @@ export default function Roadmap() {
           This roadmap reflects our current plans and priorities. Timelines and scope may change
           as products evolve and as we learn from our users.
         </p>
+        <aside className="card">
+          <h2>Growth milestone: developer resources</h2>
+          <p>Completed October 2026: this website now includes practical usage documentation and
+            project guides. This does not mark Dash Rush production release, a second game,
+            public APIs, or an open-source release as completed.</p>
+          <p><Link to="/developers/docs">Read the documentation</Link> or{' '}
+            <Link to="/developers/projects">explore project guides</Link>.</p>
+        </aside>
 
         <div className="hero__actions">
           <Link className="btn btn--primary" to="/products">

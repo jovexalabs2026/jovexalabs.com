@@ -25,6 +25,14 @@ export default function Terms() {
 
         <h2>Use of Services</h2>
         <p>
+          Jovexa Digital 2030 is an independent initiative, not an official UN, World Bank, or
+          Philippine government program. Directory links are not integrations or endorsements.
+          Warning checks are heuristics, not definitive scam findings. Business drafts are not
+          BIR-authorized tax invoices, legal advice, or guarantees of financial results.
+          PHBIN issuance, authenticated services, and authoritative completion certificates are
+          not available in this public release.
+        </p>
+        <p>
           You agree to use our Services only for lawful purposes and in accordance with these
           Terms.
         </p>

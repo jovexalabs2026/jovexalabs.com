@@ -12,6 +12,55 @@
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
+.digital-notice {
+  max-width: var(--max-width);
+  margin: 16px auto;
+  padding: 16px 24px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.digital-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  max-width: var(--max-width);
+  padding: 16px 24px;
+  margin: auto;
+}
+
+.digital-nav .active { color: var(--text); font-weight: 700; }
+.digital-form { display: grid; gap: 16px; }
+.digital-form label { display: grid; gap: 8px; }
+.digital-form input, .digital-form select, .digital-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--text-muted);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+.digital-form textarea { resize: vertical; }
+.digital-check { display: flex; align-items: flex-start; gap: 12px; margin: 16px 0; }
+.digital-check input { margin-top: 6px; }
+.digital-draft p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.digital-metrics { display: grid; gap: 16px; }
+.digital-metrics dd { margin: 8px 0 0; font-size: 2rem; font-weight: 700; }
+
+@media print {
+  body:has(.digital-draft) .site-header,
+  body:has(.digital-draft) .site-footer,
+  body:has(.digital-draft) .digital-nav,
+  body:has(.digital-draft) .digital-notice,
+  body:has(.digital-draft) .digital-form,
+  .digital-draft button { display: none; }
+  .digital-draft { background: white; color: black; border: 1px solid black; }
+  .digital-draft p, .digital-draft h2 { color: black; }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -153,7 +202,7 @@ img {
   color: var(--text);
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   .nav-toggle {
     display: inline-flex;
   }

@@ -159,10 +159,11 @@ export default function Playground() {
               <span className="playground__label">Result</span>
             </div>
             <iframe
+              key={output}
               className="playground__result"
               title="Code result"
               sandbox="allow-scripts allow-modals"
-              srcDoc={output}
+              src={`/code-preview.html#${encodeURIComponent(output)}`}
             />
           </div>
         </div>

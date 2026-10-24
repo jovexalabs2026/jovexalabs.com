@@ -22,13 +22,17 @@ export default function Developers() {
           published through our official GitHub account. This page is the hub for everything
           developer-facing at Jovexa Labs.
         </p>
+        <div className="hero__actions">
+          <Link className="btn btn--primary" to="/developers/docs">Read the documentation</Link>
+          <Link className="btn btn--secondary" to="/developers/projects">Browse project guides</Link>
+        </div>
       </section>
 
       <section className="section">
         <div className="grid grid--two">
           <div className="card">
             <h2>Repositories</h2>
-            <p>Public source code, tools, and example projects.</p>
+            <p>Check our official profile for any publicly available repositories. Private projects are not accessible through this page.</p>
             <a
               className="btn btn--secondary"
               href="https://github.com/jovexalabs2026"
@@ -41,23 +45,26 @@ export default function Developers() {
           <div className="card">
             <h2>Documentation</h2>
             <p>
-              Documentation is published per-repository in each project&apos;s README and docs
-              folder, so it always matches the code you are reading.
+              Start with browser requirements, device-only progress, Code Lab restrictions,
+              tool limitations, and safe feedback instructions.
             </p>
+            <Link to="/developers/docs">Open the usage guide</Link>
           </div>
           <div className="card">
             <h2>Releases</h2>
             <p>
-              Versioned releases with changelogs are published through GitHub Releases on each
-              project as they mature.
+              Project guides distinguish public web resources, previews, and products still
+              in testing. Future GitHub releases depend on each project; no public SDK is available now.
             </p>
+            <Link to="/developers/projects">Check project status</Link>
           </div>
           <div className="card">
             <h2>Contributing</h2>
             <p>
-              Each repository defines its own contribution guidelines. Bug reports, discussions,
-              and pull requests are welcome where enabled.
+              Send reproducible feedback without secrets or personal records. Repository
+              contributions depend on access, enabled features, and the project license.
             </p>
+            <Link to="/developers/docs#feedback">How to report an issue</Link>
           </div>
         </div>
       </section>

@@ -3,15 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <title>Redirecting…</title>
-  <script>
-    // Single-Page App redirect for GitHub Pages (no server-side rewrites available).
-    // Encodes the intended path into a query string, then index.html restores it.
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/?p=' +
-      encodeURIComponent(l.pathname.slice(1)) + l.search + l.hash
-    );
-  </script>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; base-uri 'none'; form-action 'none'" />
+  <script src="/redirect-path.js"></script>
 </head>
 <body></body>
 </html>
