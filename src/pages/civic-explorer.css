@@ -17,6 +17,15 @@
 .atlas-region-list { display: grid; gap: 8px; max-height: 480px; overflow: auto; padding: 2px; }
 .atlas-region-list button { text-align: left; }.atlas-region-list strong, .atlas-region-list span { display: block; }
 .atlas-region-list span { font-size: .7rem; margin-top: 3px; }
+.atlas-region-list strong { display: flex; align-items: center; gap: 8px; }
+.atlas-flag { width: 24px; height: 18px; object-fit: contain; flex-shrink: 0; }
+.atlas-flag--large { width: 32px; height: 24px; margin-right: 10px; vertical-align: middle; }
+.atlas-view-modes { display: flex; gap: 6px; flex-wrap: wrap; }
+.atlas .atlas-map-hint { font-size: .75rem; padding: 0 14px; color: #c1ced8; }
+.atlas--day .atlas-map-hint { color: #163443; }
+.atlas-map { touch-action: pinch-zoom; cursor: grab; }
+.atlas-map:active { cursor: grabbing; }
+.atlas-map:focus-visible { outline: 2px solid #bdf58b; outline-offset: -3px; }
 .atlas-layer { display: flex !important; gap: 8px; align-items: center; margin: 20px 0; }
 .atlas-feed { border-top: 1px solid #415766; padding: 16px 0; }.atlas-feed small { color: #e6d6a5; }
 .atlas-sidebar section { font-size: .85rem; }

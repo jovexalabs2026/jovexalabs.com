@@ -92,8 +92,9 @@ professional review remain required; technical deployment is not legal complianc
 ## Atlas civic-explorer prototype
 
 `/prototype/explorer` is an original worldwide civilian map workspace, linked only from the
-Orbit prototype rather than the main product navigation or sitemap. It has pan/zoom/reset,
-day/night styling, country/capital/continent search, three example layers, region dossiers,
+Orbit prototype rather than the main product navigation or sitemap. It has 2D/3D mode selection,
+pan/zoom/reset, mouse/touch drag and keyboard globe rotation, day/night styling,
+country/capital/continent search, three example layers, region dossiers,
 official-homepage links, original sample editorial prompts, and learning-answer reveals.
 It is not a live news, emergency, navigation, intelligence, or financial product.
 Only ten curated capital markers are interactive; they do not imply active local projects.
@@ -102,8 +103,13 @@ Selection and answers live only in page memory, not Orbit points or localStorage
 
 Worldwide land geometry is Natural Earth public-domain data from the ISC-licensed
 `world-atlas` package, decoded by ISC-licensed `topojson-client` and projected with `d3-geo`.
-Mapping dependency license notices ship in `public/atlas-licenses.txt`. The flat equirectangular
-projection is illustrative, distorts high latitudes, and supplies no political borders.
+National flag SVGs from MIT-licensed `flag-icons` identify existing example countries in the
+list, dossier, and map markers, without remote flag requests. They do not imply endorsement.
+Mapping and flag dependency license notices ship in `public/atlas-licenses.txt`.
+The 2D equirectangular projection distorts high latitudes. The 3D globe is an orthographic
+spherical projection with far-side clipping, SVG rendering and shading, not a satellite
+or terrain model. Region selection turns the globe to that capital; pan controls rotate it.
+Hidden-hemisphere markers are excluded from keyboard navigation. Neither mode supplies political borders.
 Capital coordinates are approximate. External official links need independent current
 verification; they are not partnerships, integrations, or service-availability guarantees.
 The interface and example text are original; no Sible artwork, code, or news text is reused.
