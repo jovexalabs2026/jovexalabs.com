@@ -17,9 +17,15 @@ test('corporate and Digital 2030 deep links survive reload', async ({ page }) =>
 
 test('business and safety inputs stay local and produce bounded truthful output', async ({ page }) => {
   await page.goto('/digital2030/business');
-  await expect.poll(() => page.locator('img').evaluateAll((images) => images.every((image) => image.complete))).toBe(true);
+  await expect(page.getByLabel('Tool', { exact: true })).toBeVisible();
   const outbound = [];
-  page.on('request', (request) => outbound.push(request.url()));
+  page.on('request', (request) => {
+    const url = new URL(request.url());
+    // A delayed branding image is unrelated to submitted tool inputs.
+    if (request.resourceType() === 'image' && url.origin === new URL(page.url()).origin &&
+      url.pathname === '/brand/logo-mark.png' && !url.search) return;
+    outbound.push(request.url());
+  });
   await page.getByLabel('Tool', { exact: true }).selectOption('quotation');
   await page.getByLabel('Business name').fill('Clearly marked local test');
   await page.getByLabel('Customer / target audience').fill('Fictional customer');
@@ -30,7 +36,7 @@ test('business and safety inputs stay local and produce bounded truthful output'
   await expect(page.locator('.digital-draft')).toContainText('0.30');
   expect(outbound).toEqual([]);
   await page.goto('/digital2030/cybersecurity');
-  await expect.poll(() => page.locator('img').evaluateAll((images) => images.every((image) => image.complete))).toBe(true);
+  await expect(page.getByLabel('Message or URL')).toBeVisible();
   outbound.length = 0;
   await page.getByLabel('Message or URL').fill('URGENT share OTP at http://127.0.0.1');
   await page.getByRole('button', { name: 'Check warning signs locally' }).click();
