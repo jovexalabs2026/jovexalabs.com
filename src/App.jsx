@@ -30,6 +30,7 @@ import { DigitalLayout, DigitalHome, DigitalAI, DigitalEducation, DigitalService
   DigitalSafety, DigitalBusiness, DigitalActivity } from './pages/Digital2030.jsx';
 
 const CommunityPrototype = lazy(() => import('./pages/CommunityPrototype.jsx'));
+const CivicExplorer = lazy(() => import('./pages/CivicExplorer.jsx'));
 
 export default function App() {
   return (
@@ -61,6 +62,11 @@ export default function App() {
         <Route path="prototype/community" element={
           <Suspense fallback={<p className="section" role="status">Loading community prototype...</p>}>
             <CommunityPrototype />
+          </Suspense>
+        } />
+        <Route path="prototype/explorer" element={
+          <Suspense fallback={<p className="section" role="status">Loading civic explorer...</p>}>
+            <CivicExplorer />
           </Suspense>
         } />
         <Route path="contact" element={<Contact />} />

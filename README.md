@@ -89,6 +89,28 @@ No disaster-recovery claim is made for the separate backend. Domain cutover requ
 backup and explicit approval, preserving mail records. Legal/privacy/retention and Philippine
 professional review remain required; technical deployment is not legal compliance.
 
+## Atlas civic-explorer prototype
+
+`/prototype/explorer` is an original worldwide civilian map workspace, linked only from the
+Orbit prototype rather than the main product navigation or sitemap. It has pan/zoom/reset,
+day/night styling, country/capital/continent search, three example layers, region dossiers,
+official-homepage links, original sample editorial prompts, and learning-answer reveals.
+It is not a live news, emergency, navigation, intelligence, or financial product.
+Only ten curated capital markers are interactive; they do not imply active local projects.
+No accounts, geolocation, map-tile requests, tracking, or external data feeds are used.
+Selection and answers live only in page memory, not Orbit points or localStorage.
+
+Worldwide land geometry is Natural Earth public-domain data from the ISC-licensed
+`world-atlas` package, decoded by ISC-licensed `topojson-client` and projected with `d3-geo`.
+Mapping dependency license notices ship in `public/atlas-licenses.txt`. The flat equirectangular
+projection is illustrative, distorts high latitudes, and supplies no political borders.
+Capital coordinates are approximate. External official links need independent current
+verification; they are not partnerships, integrations, or service-availability guarantees.
+The interface and example text are original; no Sible artwork, code, or news text is reused.
+Run `node --test tests/civic-explorer.test.js` and
+`npx playwright test e2e/civic-explorer.spec.js` for focused checks.
+The new route is not deployed merely by a local build; main publication remains separate.
+
 ## Repository Structure
 
 ```

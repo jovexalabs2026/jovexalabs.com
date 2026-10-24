@@ -88,6 +88,7 @@ export default function CommunityPrototype() {
               onClick={() => { setView(id); setMessage(''); }}><span aria-hidden="true">0{index + 1}</span>{label}</button>)}
           </nav>
           <p className="orbit-sidebar-note">Original Jovexa concept.<br />Device-only demo.<br />No account required.</p>
+          <Link to="/prototype/explorer">Explore the world map demo</Link>
           <Link to="/digital2030">Back to Digital 2030</Link>
         </aside>
         <section className="orbit-content" aria-label="Community prototype">
