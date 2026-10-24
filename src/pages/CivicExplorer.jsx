@@ -4,8 +4,9 @@ import Seo from '../components/Seo.jsx';
 import { CIVIC_LAYERS, CIVIC_REGIONS, CIVIC_MISSIONS, projectCoordinate,
   filterRegions, mapViewport } from '../data/civic-explorer.js';
 import { CIVIC_FLAGS } from '../data/civic-flags.js';
-import { createCivicMap, normalizeGlobeCenter } from '../lib/civic-map.js';
+import { createCivicMap, MAP_COUNTRIES, normalizeGlobeCenter } from '../lib/civic-map.js';
 import CivicNews from '../components/CivicNews.jsx';
+import CountryDetails from '../components/CountryDetails.jsx';
 import '@fontsource-variable/mona-sans/wght.css';
 import './civic-explorer.css';
 
@@ -13,6 +14,9 @@ export default function CivicExplorer() {
   const [panel, setPanel] = useState('regions');
   const [panelOpen, setPanelOpen] = useState(true);
   const [dossierOpen, setDossierOpen] = useState(true);
+  const [countryQuery, setCountryQuery] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [showBorders, setShowBorders] = useState(true);
   const [query, setQuery] = useState('');
   const [layers, setLayers] = useState(CIVIC_LAYERS.map((layer) => layer.id));
   const [selected, setSelected] = useState('ph');
@@ -36,10 +40,19 @@ export default function CivicExplorer() {
   function choose(id) {
     const next = CIVIC_REGIONS.find((item) => item.id === id);
     setSelected(id);
+    setSelectedCountry(null);
     setDossierOpen(true);
     setTab('overview');
     setCenter(projectCoordinate(next.coordinates));
     setGlobeCenter(normalizeGlobeCenter(next.coordinates));
+    setZoom(mode === 'globe' ? 1 : 2);
+  }
+
+  function chooseCountry(country) {
+    setSelectedCountry(country);
+    setDossierOpen(true);
+    setCenter(projectCoordinate(country.coordinates));
+    setGlobeCenter(normalizeGlobeCenter(country.coordinates));
     setZoom(mode === 'globe' ? 1 : 2);
   }
 
@@ -55,17 +68,19 @@ export default function CivicExplorer() {
   }
 
   function startDrag(event) {
-    if (!event.isPrimary || event.button !== 0 || event.target.closest('[role="button"]')) return;
+    if (!event.isPrimary || event.button !== 0 || event.target.closest('.atlas-pin')) return;
     const bounds = event.currentTarget.getBoundingClientRect();
     drag.current = { id: event.pointerId, x: event.clientX, y: event.clientY,
       scale: Math.min(bounds.width / viewport[2], bounds.height / viewport[3]),
       viewport, globeCenter, mode };
-    event.currentTarget.setPointerCapture(event.pointerId);
   }
 
   function moveDrag(event) {
     const start = drag.current;
     if (!start || start.id !== event.pointerId) return;
+    if (!start.moved && Math.hypot(event.clientX - start.x, event.clientY - start.y) < 4) return;
+    start.moved = true;
+    event.currentTarget.setPointerCapture(event.pointerId);
     const dx = (event.clientX - start.x) / start.scale;
     const dy = (event.clientY - start.y) / start.scale;
     if (start.mode === 'globe') {
@@ -93,12 +108,12 @@ export default function CivicExplorer() {
           <Link to="/prototype/community">Orbit demo</Link></div>
       </header>
       <p className="atlas-disclosure"><strong>MAP: SAMPLE DATA / NEWS: ON-DEMAND PUBLISHER RSS.</strong> Pins represent
-        selected capitals, not active projects, incidents, people, or verified services. No military
+        selected capitals; borders are Natural Earth reference data. Country statistics show source years, not live counters. No military
         tracking, location collection, navigation, or financial rewards.</p>
       <div className="atlas-workspace">
         <aside className="atlas-sidebar" aria-label="Explorer tools and results">
           <nav aria-label="Explorer tools">
-            {[['regions', 'Regions', 'R'], ['layers', 'Layers', 'L'], ['feed', 'Live news', 'N'], ['about', 'Sources', 'i']].map(([id, title, icon]) =>
+            {[['regions', 'Regions', 'R'], ['countries', 'Countries', 'C'], ['layers', 'Layers', 'L'], ['feed', 'Live news', 'N'], ['about', 'Sources', 'i']].map(([id, title, icon]) =>
               <button type="button" key={id} aria-current={panel === id ? 'page' : undefined}
                 aria-expanded={panel === id && panelOpen} aria-controls="atlas-tool-panel"
                 onClick={() => { setPanel(id); setPanelOpen(panel !== id || !panelOpen); }}>
@@ -117,8 +132,22 @@ export default function CivicExplorer() {
               <span>{item.city} / {item.continent}</span></button>)}</div>
             {!visible.length && <p>No matching regions. Clear the search or enable more layers.</p>}
           </section>}
+          {panel === 'countries' && <section><h2>Countries & territories</h2>
+            <label htmlFor="atlas-country-search">Search boundary dataset</label>
+            <input id="atlas-country-search" type="search" maxLength={100} value={countryQuery}
+              onChange={(event) => setCountryQuery(event.target.value)} />
+            <p>{MAP_COUNTRIES.length} geographic features. Includes territories/disputed units;
+              not a definitive sovereign-country list. Small features may not be legible at world scale.</p>
+            <div className="atlas-region-list">{MAP_COUNTRIES.filter((country) =>
+              `${country.name} ${country.iso3 ?? ''}`.toLowerCase().includes(countryQuery.trim().toLowerCase()))
+              .map((country) => <button type="button" key={country.id}
+                aria-pressed={selectedCountry?.id === country.id} onClick={() => chooseCountry(country)}>
+                <strong>{country.name}</strong><span>{country.iso3 ?? 'ISO mapping unavailable'}</span></button>)}</div>
+          </section>}
           {panel === 'layers' && <section>
             <h2>Civilian layers</h2><p>Categories demonstrate filtering; they do not represent actual local activity.</p>
+            <label className="atlas-layer"><input type="checkbox" checked={showBorders}
+              onChange={(event) => setShowBorders(event.target.checked)} />Reference country boundaries</label>
             {CIVIC_LAYERS.map((layer) => <label className="atlas-layer" key={layer.id}>
               <input type="checkbox" checked={layers.includes(layer.id)} onChange={(event) =>
                 setLayers(event.target.checked ? [...layers, layer.id] : layers.filter((id) => id !== layer.id))} />
@@ -134,12 +163,16 @@ export default function CivicExplorer() {
               <a href="/atlas-licenses.txt"> Mapping and flag license notices</a>.</p>
             <p>National flag SVGs are from the MIT-licensed flag-icons project, served locally.
               Flags identify the example country, not a government endorsement.</p>
+            <p>Country boundaries: Natural Earth via world-atlas countries-50m (241 features);
+              ISO associations: MIT-licensed i18n-iso-countries. Disputed areas and names reflect that
+              dataset, not an authoritative border determination or Jovexa territorial position.</p>
             <p>2D uses an equirectangular projection; high-latitude shapes are distorted.
               The 3D globe uses an interactive orthographic spherical projection rendered in SVG,
-              not satellite imagery or a terrain model. No borders, territorial positions,
+              not satellite imagery or a terrain model. No real-time border operations,
               exact service locations, or routes are supplied.</p>
-            <p>Capital coordinates are approximate reference points. Only {CIVIC_REGIONS.length} curated
-              sample regions are interactive; worldwide land coverage does not imply a complete directory.</p>
+            <p>Capital coordinates are approximate reference points. The {CIVIC_REGIONS.length} sample pins
+              are separate from {MAP_COUNTRIES.length} selectable geographic features. Dataset coverage does
+              not imply complete political recognition or service availability.</p>
             <p>Official homepage links are starting points, not integrations, endorsements, or
               availability guarantees. Confirm information independently.</p>
             <p>No map tiles, trackers, location permission, private APIs, accounts, or server storage.
@@ -184,6 +217,16 @@ export default function CivicExplorer() {
             <path d={map.spherePath} className="atlas-ocean" />
             <path d={map.gridPath} fill="none" className="atlas-grid-line" strokeWidth=".5" />
             <path d={map.landPath} className="atlas-land" fillRule="evenodd" />
+            {showBorders && <g className="atlas-country-boundaries" aria-label="Reference country boundaries">
+              {map.countries.filter((country) => country.path).map((country) =>
+                <path key={country.id} d={country.path} role="button" tabIndex={-1}
+                  aria-label={`Select country ${country.name}`}
+                  className={`atlas-country-shape ${selectedCountry?.id === country.id ? 'atlas-country-shape--selected' : ''}`}
+                  onClick={() => chooseCountry(MAP_COUNTRIES.find((item) => item.id === country.id))}
+                  onKeyDown={(event) => { if (event.key === 'Enter') chooseCountry(MAP_COUNTRIES.find((item) => item.id === country.id)); }}>
+                  <title>{country.name} / Natural Earth reference boundaries</title>
+                </path>)}
+            </g>}
             {mode === 'globe' && <path d={map.spherePath} fill="url(#atlas-globe-shade)" pointerEvents="none" />}
             {visible.filter((item) => map.isVisible(item.coordinates)).map((item) => {
               const [x, y] = map.project(item.coordinates);
@@ -214,10 +257,14 @@ export default function CivicExplorer() {
           <p className="atlas-map-caption">Natural Earth / approximate reference geography / not for navigation</p>
         </section>
         {!dossierOpen && <button type="button" className="atlas-reopen-dossier" onClick={() => setDossierOpen(true)}>
-          Open {region.name} dossier</button>}
+          Open {selectedCountry?.name ?? region.name} dossier</button>}
         <aside className="atlas-dossier" aria-label="Region dossier" hidden={!dossierOpen}>
           <button className="atlas-panel-close" type="button" aria-label="Close region dossier"
             onClick={() => setDossierOpen(false)}>Close</button>
+          {selectedCountry ? <>
+            <p className="eyebrow">Sourced country dossier</p><h2>{selectedCountry.name}</h2>
+            <CountryDetails key={selectedCountry.id} country={selectedCountry} />
+          </> : <>
           <p className="eyebrow">Sample region dossier</p><h2 aria-label={region.name}>
             <img className="atlas-flag atlas-flag--large" src={CIVIC_FLAGS[region.id]} alt={`Flag of ${region.name}`} />
             {region.name}</h2>
@@ -250,6 +297,7 @@ export default function CivicExplorer() {
               </article>;
             })}
           </section>}
+          </>}
         </aside>
       </div>
     </main>

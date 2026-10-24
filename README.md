@@ -195,6 +195,44 @@ and the sitemap until a separate publication decision. No production auth or dat
 
 ## Security
 
+### Atlas country-data preview
+
+`/prototype/explorer` includes 241 selectable Natural Earth geographic features
+from world-atlas countries-50m 2.0.2. These include territories and disputed units;
+they are not a definitive sovereign-state list or authoritative legal boundaries.
+Small islands can be selected through the searchable Countries panel. ISO numeric
+associations come from MIT-licensed i18n-iso-countries; unmatched features explicitly
+have no indicator association. National borders are reference data, not a live feed.
+
+Country data is opt-in. The browser contacts World Bank for GDP (current US$,
+NY.GDP.MKTP.CD) and population (SP.POP.TOTL), requesting the latest nonempty observation.
+Each observation displays its reference year, provider-update date and retrieval attempt.
+These annual estimates can be revised and are not real-time counters. Wikidata supplies
+reported heads of state/government from nondeprecated statements without a past end date
+or future start. Missing end dates can include obsolete statements: office holders are
+community-maintained, not independently verified. Links expose the statements/references;
+users must confirm against official government sources.
+
+Requests omit credentials/referrer, have a 20-second timeout, 1 MiB per-response limit,
+and a one-minute manual-refresh cooldown per mounted dossier. No requests happen before
+the user loads data. Each provider can fail independently; errors remain visible and
+missing data is never replaced by invented values. Remounting a country resets its local
+data/cooldown; this client control is not a provider-wide rate limit. Results stay only
+in page memory. CSP allows only the exact public API endpoint paths alongside NASA RSS.
+Licensing/attribution is in public/atlas-licenses.txt (World Bank dataset terms/CC BY 4.0,
+Wikidata CC0, ISO association MIT). The detailed 50m geography is in the lazy Atlas bundle
+(roughly 293 KiB gzip), not fetched on unrelated corporate routes.
+
+Not connected: live traffic, operational border/checkpoint status, business listings or
+verified business availability, and recent satellite imagery. Google Maps Platform is
+pay-as-you-go with product-specific free usage; enabling billing/keys requires separate
+approval, and no billing account or paid service was activated:
+https://developers.google.com/maps/billing-and-pricing/overview
+NASA GIBS is a potential public imagery source; acquisition time, processing latency,
+cloud cover and coverage must be shown before claiming any "last 24 hours" layer:
+https://nasa-gibs.github.io/gibs-api-docs/
+No surveillance, real-time satellite positions or security-checkpoint tracking is implied.
+
 Do not commit secrets, API keys, or credentials. Report security concerns to
 admin@jovexalabs.com.
 

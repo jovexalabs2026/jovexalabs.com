@@ -1,5 +1,38 @@
 Jovexa Atlas mapping notices
 
+Country statistics are requested from World Bank Open Data, with original
+indicator IDs, observation years and provider-update dates displayed.
+Standard dataset license: CC BY 4.0, subject to individual dataset terms:
+https://datacatalog.worldbank.org/public-licenses
+https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
+https://data.worldbank.org/indicator/SP.POP.TOTL
+
+Leadership statements are requested from Wikidata (community-maintained).
+Structured data is available under CC0:
+https://www.wikidata.org/wiki/Wikidata:Licensing
+These sources do not endorse Jovexa. No real-time or accuracy warranty is made.
+
+i18n-iso-countries 7.14.0 (MIT; ISO association data)
+Copyright (c) 2016 widdix GmbH
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to
+do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 Land geometry is derived from Natural Earth public-domain geographic data:
 https://www.naturalearthdata.com/about/terms-of-use/
 

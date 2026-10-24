@@ -13,6 +13,7 @@ export default function CivicNews({ active }) {
   const [completed, setCompleted] = useState([]);
   const [confirmed, setConfirmed] = useState(false);
   const [cooldown, setCooldown] = useState(0);
+  const [wallTime, setWallTime] = useState(0);
   const controller = useRef(null);
   const nextRefresh = useRef(0);
 
@@ -22,6 +23,7 @@ export default function CivicNews({ active }) {
     if (!active && !activity) return;
     const update = () => {
       const now = performance.now();
+      setWallTime(Date.now());
       setCooldown(Math.max(0, Math.ceil((nextRefresh.current - now) / 1000)));
       if (activity) setRemaining(readingRemaining(activity.startedAt, now));
     };
@@ -55,9 +57,9 @@ export default function CivicNews({ active }) {
     }
   }
 
-  function start(item) {
+  function handleStart(item, startedAt) {
     if (activity || completed.includes(item.id)) return;
-    setActivity({ ...item, startedAt: performance.now() });
+    setActivity({ ...item, startedAt });
     setRemaining(30_000);
     setConfirmed(false);
   }
@@ -73,8 +75,8 @@ export default function CivicNews({ active }) {
   const shown = articles.filter((item) =>
     item.title.toLocaleLowerCase('en-US').includes(search.trim().toLocaleLowerCase('en-US')) &&
     (filter === 'all' || completed.includes(item.id)));
-  const stale = fetchedAt && (Date.now() - Date.parse(fetchedAt) > 15 * 60_000 ||
-    articles.length > 0 && Date.now() - Date.parse(articles[0].publishedAt) > 7 * 86_400_000);
+  const stale = fetchedAt && (wallTime - Date.parse(fetchedAt) > 15 * 60_000 ||
+    articles.length > 0 && wallTime - Date.parse(articles[0].publishedAt) > 7 * 86_400_000);
 
   return <section className="atlas-news" aria-label="Live science news">
     <div className="atlas-news-heading"><div><p className="eyebrow">Publisher feed / science</p>
@@ -122,7 +124,7 @@ export default function CivicNews({ active }) {
         {new Date(item.publishedAt).toUTCString()}</time></small><h3>{item.title}</h3>
         {completed.includes(item.id) ? <p className="atlas-reading-done">Completed (self-reported)</p> :
           activity ? <a href={item.url} target="_blank" rel="noopener noreferrer">Read original at NASA (new tab)</a> :
-            <a href={item.url} target="_blank" rel="noopener noreferrer" onClick={() => start(item)}>
+            <a href={item.url} target="_blank" rel="noopener noreferrer" onClick={(event) => handleStart(item, event.timeStamp)}>
               Open source & start 30s activity</a>}
       </div>
     </article>)}</div>

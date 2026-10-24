@@ -67,6 +67,13 @@ export default function Privacy() {
           or account rewards. Fonts and national flag assets are self-hosted.
         </p>
         <p>
+          Choosing "Load country data" in Atlas contacts the World Bank API for the selected ISO
+          country code and Wikidata for reported leadership statements. Both providers receive
+          your IP address and ordinary request metadata; credentials and referrer are omitted.
+          Results and refresh timers remain in page memory only. No geolocation, private
+          organization records, user profile or verification documents are sent.
+        </p>
+        <p>
           Jovexa applications may rely on third-party services such as Google Play Services,
           Google AdMob, analytics providers, and crash reporting tools. Each third-party service
           operates under its own privacy policy.
