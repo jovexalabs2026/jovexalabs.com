@@ -21,7 +21,7 @@ const PHASES = [
       'Post-launch content updates for Dash Rush with new challenges, progression, and polish',
       'A second mobile title, building on everything we learn from Dash Rush',
       'First open-source releases: small tools and libraries from our internal work',
-      'Improved developer documentation and public project pages',
+      'Completed: developer documentation and public project pages (October 2026)',
     ],
   },
   {
@@ -82,7 +82,7 @@ export default function Roadmap() {
         </p>
         <aside className="card">
           <h2>Growth milestone: developer resources</h2>
-          <p>The public-preview release now includes practical usage documentation and
+          <p>Completed October 2026: this website now includes practical usage documentation and
             project guides. This does not mark Dash Rush production release, a second game,
             public APIs, or an open-source release as completed.</p>
           <p><Link to="/developers/docs">Read the documentation</Link> or{' '}

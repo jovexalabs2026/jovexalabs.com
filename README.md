@@ -63,7 +63,10 @@ The preparation removes GitHub-only CNAME/404 files from output, without editing
 Native Pages SPA fallback preserves deep links; there is no catch-all `_redirects` rule, which
 would override existing JavaScript assets. `_headers` applies main-app restrictions and a
 separate opaque-origin, no-network Code Lab sandbox. Do not deploy the code-preview response to
-a host that ignores these headers without equivalent sandbox/CSP configuration.
+a host that ignores these headers without equivalent sandbox/CSP configuration. HTML meta CSP
+now provides portable script/network restrictions on GitHub Pages, and the iframe retains its
+opaque-origin sandbox. Meta CSP cannot supply frame-ancestors, HSTS, nosniff, or Permissions-Policy;
+Cloudflare's response-header protections remain stronger. Do not claim those headers on GitHub Pages.
 The main app disallows inline scripts; inline styles remain allowed for the preserved React
 components and lesson UI. Only the sandboxed Code Lab permits learner-written inline scripts.
 The preview is marked noindex; existing canonical URLs still identify jovexalabs.com.
@@ -74,8 +77,10 @@ Pure tool logic is adapted from the existing unified platform implementation.
 The Pages preview does not connect a custom domain or change nameservers, MX, SPF, DKIM, or DMARC.
 No paid resource is required for this static upload. Free-tier limitations and provider account
 terms still apply. Deployment is manual; GitHub CI validates the branch but does not release it.
-Do not push/merge to `main` to deploy the preview: that would trigger the existing GitHub Pages
-workflow for the live corporate domain.
+Merging to `main` releases to the existing GitHub Pages corporate domain, not just the preview.
+The main deployment runs lint, unit tests, build, and browser tests in `STATIC_HOST=github`
+mode before uploading. That mode exercises 404-to-index deep-link restoration without
+Cloudflare headers. Both host modes are also tested in pull-request CI.
 
 Rollback: use the prior Pages deployment if available, or redeploy a previously validated
 static build. The unchanged corporate `main` / GitHub Pages deployment is independent.

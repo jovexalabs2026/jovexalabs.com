@@ -7,12 +7,20 @@ test('corporate and Digital 2030 deep links survive reload', async ({ page }) =>
     '/digital2030/ai', '/digital2030/education', '/digital2030/services',
     '/digital2030/cybersecurity', '/digital2030/business', '/digital2030/impact']) {
     const response = await page.goto(route);
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(process.env.STATIC_HOST === 'github' && route !== '/' ? 404 : 200);
     await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('h1')).not.toHaveText('404');
+    await expect(page).toHaveURL(new RegExp(`${route === '/' ? '/' : route}$`));
     await page.reload();
     await expect(page.locator('h1')).toBeVisible();
   }
   expect(errors).toEqual([]);
+});
+
+test('deep-link query strings and fragments survive static host redirects', async ({ page }) => {
+  await page.goto('/developers/docs?source=roadmap&campaign=public#feedback');
+  await expect(page.getByRole('heading', { name: 'Start using our public tools' })).toBeVisible();
+  await expect(page).toHaveURL(/\/developers\/docs\?source=roadmap&campaign=public#feedback$/);
 });
 
 test('business and safety inputs stay local and produce bounded truthful output', async ({ page }) => {
@@ -71,14 +79,19 @@ test('Code Lab executes in an isolated frame with network and parent access bloc
 
 test('security headers protect main app and separately sandbox the preview', async ({ request }) => {
   const response = await request.get('/digital2030');
-  expect(response.headers()['content-security-policy']).toContain("script-src 'self'");
-  expect(response.headers()['x-content-type-options']).toBe('nosniff');
-  expect(response.headers()['x-robots-tag']).toContain('noindex');
-  const preview = await request.get('/code-preview');
-  expect(preview.headers()['content-security-policy']).toContain('sandbox allow-scripts');
-  expect(preview.headers()['content-security-policy']).toContain("connect-src 'none'");
+  const github = process.env.STATIC_HOST === 'github';
+  const appResponse = github ? await request.get('/') : response;
+  if (!github) {
+    expect(response.headers()['content-security-policy']).toContain("script-src 'self'");
+    expect(response.headers()['x-content-type-options']).toBe('nosniff');
+    expect(response.headers()['x-robots-tag']).toContain('noindex');
+  }
+  expect(await appResponse.text()).toContain('http-equiv="Content-Security-Policy"');
+  const preview = await request.get('/code-preview.html');
+  if (!github) expect(preview.headers()['content-security-policy']).toContain('sandbox allow-scripts');
+  expect(await preview.text()).toContain("connect-src 'none'");
   expect(await preview.text()).toContain('/code-preview.js');
-  const html = await response.text();
+  const html = await appResponse.text();
   const assetPath = html.match(/src="([^"]+\/assets\/[^"]+\.js)"/)?.[1] ??
     html.match(/src="(\/assets\/[^"]+\.js)"/)?.[1];
   expect(assetPath).toBeTruthy();

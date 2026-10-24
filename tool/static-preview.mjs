@@ -12,16 +12,21 @@ const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/cs
   '.png': 'image/png', '.svg': 'image/svg+xml', '.json': 'application/json',
   '.webmanifest': 'application/manifest+json', '.txt': 'text/plain' };
 
-// Local-only test helper; Cloudflare, not this server, is the deployment target.
+const github = process.env.STATIC_HOST === 'github';
+// Local-only test helper for both supported static hosting targets.
 http.createServer((request, response) => {
   const pathname = new URL(request.url, 'http://127.0.0.1').pathname;
   let file = path.resolve(root, `.${pathname}`);
   if (file !== root && !file.startsWith(root + path.sep)) {
     response.writeHead(403).end('Access denied'); return;
   }
-  if (!fs.existsSync(file) && fs.existsSync(`${file}.html`)) file += '.html';
-  if (!fs.existsSync(file) || !fs.statSync(file).isFile()) file = path.join(root, 'index.html');
-  for (const rule of rules.filter((item) => item.route === pathname ||
+  if (pathname === '/') file = path.join(root, 'index.html');
+  if (!github && !fs.existsSync(file) && fs.existsSync(`${file}.html`)) file += '.html';
+  if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
+    file = path.join(root, github ? '404.html' : 'index.html');
+    if (github) response.statusCode = 404;
+  }
+  for (const rule of (github ? [] : rules).filter((item) => item.route === pathname ||
     (item.route.endsWith('*') && pathname.startsWith(item.route.slice(0, -1))))) {
     for (const header of rule.headers) {
       if (header.startsWith('! ')) response.removeHeader(header.slice(2));
