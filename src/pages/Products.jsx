@@ -24,6 +24,7 @@ export default function Products() {
               <Link className="btn btn--secondary" to={p.link || `/products/${p.slug}`}>
                 {p.cta || 'Learn More'}
               </Link>
+              {p.projectPath && <p><Link to={p.projectPath}>Project details and limitations</Link></p>}
             </article>
           ))}
         </div>

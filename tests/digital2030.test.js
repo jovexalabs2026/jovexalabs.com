@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import { assessSafety } from '../src/lib/digital2030/safety.js';
 import { businessPlan, documentTotal } from '../src/lib/digital2030/business.js';
 import { publicServices } from '../src/lib/digital2030/services.js';
+import { products } from '../src/data/products.js';
 
 test('business arithmetic uses integer centavos and rejects invalid inputs', () => {
   assert.equal(documentTotal('3', '0.10').cents, 30);
@@ -51,4 +52,17 @@ test('all seven initiative routes are wired', () => {
   for (const route of ['digital2030', 'ai', 'education', 'services', 'cybersecurity', 'business', 'impact']) {
     assert.ok(routes.includes(`path="${route}"`));
   }
+});
+
+test('public web project guides use unique canonical paths and disclose limitations', () => {
+  assert.equal(new Set(products.map((product) => product.slug)).size, products.length);
+  const webProjects = products.filter((product) => product.projectPath);
+  assert.equal(webProjects.length, 2);
+  for (const product of webProjects) {
+    assert.equal(product.projectPath, `/products/${product.slug}`);
+    assert.ok(product.capabilities.length > 0);
+    assert.ok(product.limitations.length > 0);
+    assert.ok(product.link.startsWith('/'));
+  }
+  assert.match(webProjects.find((product) => product.slug === 'digital2030').limitations.join(' '), /No PHBIN issuance/);
 });

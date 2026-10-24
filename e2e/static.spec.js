@@ -85,3 +85,42 @@ test('security headers protect main app and separately sandbox the preview', asy
   const asset = await request.get(assetPath);
   expect(asset.headers()['content-type']).toMatch(/javascript/);
 });
+
+test('developer guides, project details and roadmap are connected and reloadable', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.goto('/developers');
+  await page.getByRole('link', { name: 'Read the documentation', exact: true }).click();
+  await expect(page).toHaveURL(/\/developers\/docs$/);
+  await expect(page.getByRole('heading', { name: 'Start using our public tools' })).toBeVisible();
+  await page.getByRole('navigation', { name: 'Documentation sections' }).getByRole('link', { name: 'Feedback and contributions' }).click();
+  await expect(page).toHaveURL(/#feedback$/);
+  await expect(page.locator('#feedback')).toBeInViewport();
+  for (const [route, title] of [
+    ['/developers/projects', 'Public project guides'],
+    ['/products/jovexa-learn', 'Jovexa Learn'],
+    ['/products/digital2030', 'Jovexa Digital 2030'],
+  ]) {
+    await page.goto(route);
+    await page.reload();
+    await expect(page.getByRole('heading', { level: 1, name: title, exact: true })).toBeVisible();
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://jovexalabs.com${route}`);
+    await page.setViewportSize({ width: 390, height: 900 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+  await expect(page.locator('main')).toContainText('No PHBIN issuance');
+  await page.goto('/roadmap');
+  await expect(page.getByRole('heading', { name: 'Growth milestone: developer resources' })).toBeVisible();
+  await page.goto('/products/constructor');
+  await expect(page.getByRole('heading', { name: '404', exact: true })).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('public contributions do not require private repository access or grant a source license', async ({ page }) => {
+  await page.goto('/learn/community');
+  await expect(page.locator('main a[href*="jovexalabs.com/issues"], main a[href*="jovexalabs.com/pulls"]')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: /Report an Issue/ })).toHaveAttribute('href', /^mailto:admin@jovexalabs\.com/);
+  await page.getByRole('link', { name: 'feedback and contribution guide' }).click();
+  await expect(page.locator('main')).toContainText('all-rights-reserved license');
+  await expect(page.locator('main')).toContainText('not an authenticated API');
+});

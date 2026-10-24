@@ -29,6 +29,8 @@ const COLUMNS = [
     heading: 'Developers',
     links: [
       { to: '/developers', label: 'Developer Hub' },
+      { to: '/developers/docs', label: 'Documentation' },
+      { to: '/developers/projects', label: 'Project Guides' },
       { to: '/open-source', label: 'Open Source' },
       { href: 'https://github.com/jovexalabs2026', label: 'GitHub' },
     ],

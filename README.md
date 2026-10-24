@@ -99,6 +99,17 @@ src/
 This is the official Jovexa Labs website repository. Open an issue or pull request on GitHub for
 suggestions.
 
+## Public developer resources
+
+The public documentation at `/developers/docs` explains learning progress, Code Lab isolation,
+local business/safety tools, feedback, and licensing. `/developers/projects` links to the existing
+Dash Rush page plus `/products/jovexa-learn` and `/products/digital2030`. Product summaries and
+web-project limitations share `src/data/products.js`; unknown product slugs render the existing
+not-found page. These routes are included in the sitemap and browser regression suite.
+The roadmap identifies this documentation milestone in the preview without claiming other
+milestones are complete. No repository visibility or license is changed. Keep public status
+and limitation text aligned with the deployed features before releasing either hosting target.
+
 ## Security
 
 Do not commit secrets, API keys, or credentials. Report security concerns to

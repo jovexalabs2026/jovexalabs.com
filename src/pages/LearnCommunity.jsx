@@ -3,28 +3,28 @@ import Seo from '../components/Seo.jsx';
 
 const WAYS = [
   {
-    title: 'Star and follow on GitHub',
-    text: 'The platform and all lesson content live in the open on GitHub. Watch the repository to follow development.',
+    title: 'Find our GitHub profile',
+    text: 'Check the official profile for publicly available projects. Repository access and licensing vary; public lessons do not imply an open-source license.',
     href: 'https://github.com/jovexalabs2026',
     label: 'Visit GitHub',
   },
   {
     title: 'Report an issue',
-    text: 'Found a typo, a broken example, or a bug in the playground? Open an issue and we will look into it.',
-    href: 'https://github.com/jovexalabs2026/jovexalabs.com/issues',
+    text: 'Found a typo, broken example, or Code Lab bug? Send the page URL and reproducible steps without personal data.',
+    href: 'mailto:admin@jovexalabs.com?subject=Learning%20feedback',
     label: 'Report an Issue',
   },
   {
     title: 'Suggest a lesson',
-    text: 'Tell us what you want to learn next. Course and lesson suggestions are tracked as GitHub issues.',
-    href: 'https://github.com/jovexalabs2026/jovexalabs.com/issues',
+    text: 'Tell us the topic and what you want to achieve. Use original examples or material you have permission to share.',
+    href: 'mailto:admin@jovexalabs.com?subject=Lesson%20suggestion',
     label: 'Suggest a Lesson',
   },
   {
     title: 'Improve the content',
-    text: 'Lessons are plain data files in the repository. Fix wording, improve an example, or add an exercise through a pull request.',
-    href: 'https://github.com/jovexalabs2026/jovexalabs.com/pulls',
-    label: 'Open a Pull Request',
+    text: 'Contact us about a correction or original exercise before preparing a large contribution. Source access and reuse permissions are separate.',
+    href: 'mailto:admin@jovexalabs.com?subject=Content%20contribution',
+    label: 'Discuss a Contribution',
   },
 ];
 
@@ -43,10 +43,10 @@ export default function LearnCommunity() {
           <span>Community</span>
         </nav>
         <p className="eyebrow">Community</p>
-        <h1>Built in the open</h1>
+        <h1>Help improve Jovexa Learn</h1>
         <p className="hero__lead">
-          Jovexa Learn is an open-source project by Jovexa Labs. Anyone can help improve the
-          lessons, the tools, and the platform itself.
+          Share feedback about the lessons, tools, and platform. Free learning access does not
+          grant a source-code license or access to private repositories.
         </p>
       </section>
 
@@ -65,8 +65,9 @@ export default function LearnCommunity() {
         <div className="callout">
           <p className="callout__title">Contribution guidelines</p>
           <p>
-            Read the CONTRIBUTING guide in the repository before opening a pull request. It covers
-            lesson-writing style, originality requirements, and the review process.
+            Read our <Link to="/developers/docs#feedback">feedback and contribution guide</Link> for
+            report details, originality requirements, and safe disclosure. Reuse rights remain
+            subject to an explicit project license.
           </p>
         </div>
       </section>

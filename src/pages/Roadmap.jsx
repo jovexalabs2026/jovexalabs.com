@@ -80,6 +80,14 @@ export default function Roadmap() {
           This roadmap reflects our current plans and priorities. Timelines and scope may change
           as products evolve and as we learn from our users.
         </p>
+        <aside className="card">
+          <h2>Growth milestone: developer resources</h2>
+          <p>The public-preview release now includes practical usage documentation and
+            project guides. This does not mark Dash Rush production release, a second game,
+            public APIs, or an open-source release as completed.</p>
+          <p><Link to="/developers/docs">Read the documentation</Link> or{' '}
+            <Link to="/developers/projects">explore project guides</Link>.</p>
+        </aside>
 
         <div className="hero__actions">
           <Link className="btn btn--primary" to="/products">
