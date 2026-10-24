@@ -14,8 +14,14 @@ test('country polygons select dossiers directly without consuming clicks as drag
   await page.getByRole('button', { name: 'Close region dossier', exact: true }).click();
   await page.getByRole('button', { name: 'Select country Brazil', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Brazil', exact: true })).toBeVisible();
+  await expect(page.locator('.atlas-pin--selected')).toHaveCount(0);
   await page.getByRole('button', { name: '3D globe', exact: true }).click();
   await expect(page.locator('.atlas-country-shape--selected')).toHaveAttribute('aria-label', 'Select country Brazil');
+  await page.getByRole('button', { name: 'Regions', exact: true }).click();
+  await expect(page.locator('.atlas-region-list button[aria-pressed=true]')).toHaveCount(0);
+  await page.locator('.atlas-region-list').getByRole('button', { name: 'Philippines Manila / Asia', exact: true }).click();
+  await expect(page.locator('.atlas-country-shape--selected')).toHaveCount(0);
+  await expect(page.locator('.atlas-pin--selected')).toHaveCount(1);
 });
 
 test('all reference boundaries are selectable and source-year country data is opt-in', async ({ page }) => {

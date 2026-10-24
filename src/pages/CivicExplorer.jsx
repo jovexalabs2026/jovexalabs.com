@@ -127,7 +127,7 @@ export default function CivicExplorer() {
             <input id="atlas-search" type="search" maxLength={100} value={query} onChange={(event) => setQuery(event.target.value)} />
             <p role="status">{visible.length} of {CIVIC_REGIONS.length} sample regions shown</p>
             <div className="atlas-region-list">{visible.map((item) => <button type="button" key={item.id}
-              aria-pressed={selected === item.id} onClick={() => choose(item.id)}>
+              aria-pressed={!selectedCountry && selected === item.id} onClick={() => choose(item.id)}>
               <strong><img className="atlas-flag" src={CIVIC_FLAGS[item.id]} alt="" />{item.name}</strong>
               <span>{item.city} / {item.continent}</span></button>)}</div>
             {!visible.length && <p>No matching regions. Clear the search or enable more layers.</p>}
@@ -232,13 +232,13 @@ export default function CivicExplorer() {
               const [x, y] = map.project(item.coordinates);
               const color = CIVIC_LAYERS.find((layer) => layer.id === item.layer).color;
               return <g key={item.id} role="button" tabIndex={0} aria-label={`Explore ${item.name}`}
-                aria-pressed={selected === item.id} className={`atlas-pin ${selected === item.id ? 'atlas-pin--selected' : ''}`}
+                aria-pressed={!selectedCountry && selected === item.id} className={`atlas-pin ${!selectedCountry && selected === item.id ? 'atlas-pin--selected' : ''}`}
                 onClick={() => choose(item.id)} onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(item.id); }
                 }}>
                 <title>{item.name} / sample reference marker</title>
                 <rect x={x - 12} y={y - 20} width="30" height="32" fill="transparent" />
-                <circle cx={x} cy={y} r={selected === item.id ? 6 : 4} fill={color} stroke="#102333" strokeWidth="1.5" />
+                <circle cx={x} cy={y} r={!selectedCountry && selected === item.id ? 6 : 4} fill={color} stroke="#102333" strokeWidth="1.5" />
                 <image href={CIVIC_FLAGS[item.id]} x={x - 10} y={y - 20} width="20" height="15" aria-hidden="true" />
               </g>;
             })}
