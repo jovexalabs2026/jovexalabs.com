@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
 import Home from './pages/Home.jsx';
@@ -28,6 +29,8 @@ import NotFound from './pages/NotFound.jsx';
 import { DigitalLayout, DigitalHome, DigitalAI, DigitalEducation, DigitalServices,
   DigitalSafety, DigitalBusiness, DigitalActivity } from './pages/Digital2030.jsx';
 
+const CommunityPrototype = lazy(() => import('./pages/CommunityPrototype.jsx'));
+
 export default function App() {
   return (
     <Routes>
@@ -55,6 +58,11 @@ export default function App() {
         <Route path="developers" element={<Developers />} />
         <Route path="developers/docs" element={<DeveloperDocs />} />
         <Route path="developers/projects" element={<DeveloperProjects />} />
+        <Route path="prototype/community" element={
+          <Suspense fallback={<p className="section" role="status">Loading community prototype...</p>}>
+            <CommunityPrototype />
+          </Suspense>
+        } />
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />

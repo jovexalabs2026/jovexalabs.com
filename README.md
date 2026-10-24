@@ -115,6 +115,27 @@ The roadmap identifies this documentation milestone in the preview without claim
 milestones are complete. No repository visibility or license is changed. Keep public status
 and limitation text aligned with the deployed features before releasing either hosting target.
 
+## Jovexa Orbit concept prototype (not published on main)
+
+The `feature/jovexa-community-prototype` branch adds `/prototype/community`, an original,
+non-financial community concept. It provides an accelerated one-minute session, fictional
+points, three self-reported daily activities (UTC), a shared untracked sample invitation,
+and responsive navigation. It is not affiliated with Sible Network; no third-party code,
+branding, images, or text is reused.
+
+There is no token, real mining/AI computation, wallet, deposit, payment, withdrawal, referral
+tracking, user-count claim, reward entitlement, or account system. Points have no value.
+The demo stores only its timer/counts/claims under `jovexa-community-demo-v1`; reset removes
+only that key. Storage failures are shown and invalid data requires explicit reset.
+Progress depends on the device clock/storage and is editable; it is not a trustworthy ledger
+or a cross-tab/concurrent anti-fraud mechanism. An inactive tab accrues no extra sessions;
+each completed session must be claimed before another can begin.
+
+Run `npm test`, `npm run build`, and `npm run test:e2e` to validate, including the isolated
+prototype tests. Launch `npm run dev -- --host 127.0.0.1` and visit `/prototype/community`
+for local review. It is deliberately absent from main navigation, public project listings,
+and the sitemap until a separate publication decision. No production auth or database is used.
+
 ## Security
 
 Do not commit secrets, API keys, or credentials. Report security concerns to

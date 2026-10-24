@@ -1,0 +1,76 @@
+.orbit { --orbit-lime: #c8f78b; max-width: 1440px; margin: auto; padding: 24px; }
+.orbit-notice { display: grid; gap: 4px; padding: 16px 24px; border: 1px solid #667c48; background: #162115; border-radius: 16px; margin-bottom: 24px; color: #e6f6d5; }
+.orbit-notice span { font-size: .875rem; }
+.orbit-shell { display: grid; grid-template-columns: 220px minmax(0, 1fr); border: 1px solid #293443; border-radius: 24px; overflow: hidden; background: #0a111b; }
+.orbit-sidebar { padding: 32px 20px; background: #101a27; display: flex; flex-direction: column; gap: 32px; }
+.orbit-brand { display: flex; gap: 12px; align-items: center; color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+.orbit-brand small { display: block; color: #b7c2cf; font-size: .7rem; font-weight: 400; }
+.orbit-mark { display: grid; place-items: center; border: 3px solid var(--orbit-lime); border-radius: 50%; width: 40px; height: 40px; color: var(--orbit-lime); flex-shrink: 0; }
+.orbit-sidebar nav { display: grid; gap: 8px; }
+.orbit-sidebar nav button { display: flex; text-align: left; gap: 12px; align-items: center; background: transparent; color: #c4ced9; border: 1px solid transparent; padding: 14px 10px; border-radius: 12px; font: inherit; cursor: pointer; }
+.orbit-sidebar nav button span { font-size: .7rem; color: #9aabbc; }
+.orbit-sidebar nav button[aria-current] { background: #26362b; border-color: #637c4d; color: var(--orbit-lime); }
+.orbit-sidebar-note { margin-top: auto; font-size: .8rem; color: #b7c2cf; }
+.orbit-content { padding: 32px; min-width: 0; }
+.orbit-heading, .orbit-card-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.orbit h1 { font-size: clamp(1.9rem, 3vw, 2.75rem); margin: 4px 0; letter-spacing: -.04em; }
+.orbit h2 { font-size: 1.25rem; line-height: 1.4; margin: 8px 0 16px; }
+.orbit p { color: #c1cbd7; }
+.orbit .eyebrow { color: var(--orbit-lime); margin: 0; }
+.orbit-chip { display: inline-block; border: 1px solid #526648; background: #1c2b21; border-radius: 20px; color: #d3f8aa; padding: 4px 10px; font-size: .65rem; font-weight: 700; letter-spacing: .07em; white-space: nowrap; }
+.orbit-message { min-height: 24px; font-size: .9rem; }
+.orbit-error { border: 1px solid #d28f82; background: #3b2227; color: #ffe3dc; padding: 16px; border-radius: 12px; overflow-wrap: anywhere; }
+.orbit-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px; }
+.orbit-card { background: #131f2d; border: 1px solid #304154; border-radius: 20px; padding: 24px; min-width: 0; }
+.orbit-card p:first-child { margin-top: 0; }
+.orbit-stats strong { display: block; font-size: 2.1rem; line-height: 1.4; }
+.orbit small { color: #b7c2cf; }
+.orbit-stats small { display: block; }
+.orbit-dashboard { display: grid; grid-template-columns: 1.15fr 1fr; gap: 24px; }
+.orbit-stack { display: grid; gap: 24px; align-content: start; }
+.orbit-session { text-align: center; }
+.orbit-session .orbit-card-title { text-align: left; }
+.orbit-ring { width: 220px; height: 220px; max-width: 100%; aspect-ratio: 1; margin: 24px auto; border-radius: 50%; padding: 14px; border: 1px solid #56764a; background: conic-gradient(from 45deg, #c8f78b, #2c4a40, #152433, #c8f78b); }
+.orbit-ring > div { width: 100%; height: 100%; border-radius: 50%; background: #101b28; display: flex; justify-content: center; flex-direction: column; }
+.orbit-ring span { font-size: 2.5rem; font-weight: 700; font-variant-numeric: tabular-nums; color: #efffe2; }
+.orbit-ring small { font-size: .65rem; letter-spacing: .12em; }
+.orbit-ring--active { box-shadow: 0 0 36px #a7e78419; }
+.orbit-progress { width: 100%; height: 6px; accent-color: var(--orbit-lime); margin: 0 0 20px; }
+.orbit .btn--primary { background: var(--orbit-lime); color: #112019; border-color: var(--orbit-lime); }
+.orbit .btn--secondary { background: #203344; color: #f1f7ff; border-color: #7c91a4; }
+.orbit button { cursor: pointer; }
+.orbit button:disabled { opacity: .55; cursor: not-allowed; }
+.orbit-session > button { width: 100%; }
+.orbit-session > small { display: block; margin-top: 16px; font-size: .75rem; }
+.orbit-feature { background: linear-gradient(135deg, #21392d, #152332); }
+.orbit-text-button { border: 0; background: none; color: var(--orbit-lime); padding: 8px 0; font: inherit; text-decoration: underline; }
+.orbit-task { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; }
+.orbit-task-action { display: grid; gap: 16px; align-content: center; }
+.orbit-task-action label { display: flex; align-items: center; gap: 8px; }
+.orbit-invite { max-width: 680px; }
+.orbit-invite label { display: block; margin-top: 24px; }
+.orbit-invite input { width: 100%; font: inherit; background: #0a111b; border: 1px solid #8ba0b3; color: white; border-radius: 10px; padding: 12px; margin: 8px 0 20px; }
+.orbit-footer { border-top: 1px solid #304154; margin-top: 32px; padding-top: 16px; font-size: .85rem; }
+.orbit-explanation { max-width: 720px; }
+@media (max-width: 1050px) {
+  .orbit-shell { grid-template-columns: 1fr; }
+  .orbit-sidebar { padding: 20px; gap: 16px; }
+  .orbit-sidebar nav { grid-template-columns: repeat(4, 1fr); }
+  .orbit-sidebar nav button { justify-content: center; }
+  .orbit-sidebar-note { display: none; }
+  .orbit-sidebar > a:last-child { font-size: .8rem; }
+}
+@media (max-width: 640px) {
+  .orbit { padding: 12px; }
+  .orbit-notice { padding: 16px; }
+  .orbit-content { padding: 20px 16px; }
+  .orbit-stats, .orbit-dashboard, .orbit-task { grid-template-columns: 1fr; }
+  .orbit-stats { gap: 10px; }
+  .orbit-stats .orbit-card { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 16px; }
+  .orbit-stats p { margin: 0; }
+  .orbit-stats small { grid-column: 1 / -1; }
+  .orbit-stats strong { font-size: 1.65rem; }
+  .orbit-sidebar nav { grid-template-columns: repeat(2, 1fr); }
+  .orbit-sidebar nav button { padding: 10px 8px; font-size: .8rem; }
+  .orbit-card { padding: 20px; }
+}
