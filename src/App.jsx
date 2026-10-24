@@ -35,6 +35,11 @@ const CivicExplorer = lazy(() => import('./pages/CivicExplorer.jsx'));
 export default function App() {
   return (
     <Routes>
+      <Route path="prototype/explorer" element={
+        <Suspense fallback={<p className="section" role="status">Loading civic explorer...</p>}>
+          <CivicExplorer />
+        </Suspense>
+      } />
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
@@ -62,11 +67,6 @@ export default function App() {
         <Route path="prototype/community" element={
           <Suspense fallback={<p className="section" role="status">Loading community prototype...</p>}>
             <CommunityPrototype />
-          </Suspense>
-        } />
-        <Route path="prototype/explorer" element={
-          <Suspense fallback={<p className="section" role="status">Loading civic explorer...</p>}>
-            <CivicExplorer />
           </Suspense>
         } />
         <Route path="contact" element={<Contact />} />

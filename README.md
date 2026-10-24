@@ -92,7 +92,13 @@ professional review remain required; technical deployment is not legal complianc
 ## Atlas civic-explorer prototype
 
 `/prototype/explorer` is an original worldwide civilian map workspace, linked only from the
-Orbit prototype rather than the main product navigation or sitemap. It has 2D/3D mode selection,
+Orbit prototype rather than the main product navigation or sitemap. The standalone route
+does not render the corporate header/footer. Desktop uses an edge-to-edge map, a compact
+tool rail, floating scrollable tools/dossier panels, and corner-mounted view/navigation controls.
+Panels can be closed; choosing a region reopens its dossier. On narrower screens the map
+comes first and tools/details stack below it to preserve readable, keyboard-accessible controls.
+The prototype disclosure remains visible. This is an original interface, not a pixel-for-pixel
+copy of a third-party product. It has 2D/3D mode selection,
 pan/zoom/reset, mouse/touch drag and keyboard globe rotation, day/night styling,
 country/capital/continent search, three example layers, region dossiers,
 official-homepage links, original sample editorial prompts, and learning-answer reveals.

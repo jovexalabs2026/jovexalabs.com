@@ -9,6 +9,8 @@ import './civic-explorer.css';
 
 export default function CivicExplorer() {
   const [panel, setPanel] = useState('regions');
+  const [panelOpen, setPanelOpen] = useState(true);
+  const [dossierOpen, setDossierOpen] = useState(true);
   const [query, setQuery] = useState('');
   const [layers, setLayers] = useState(CIVIC_LAYERS.map((layer) => layer.id));
   const [selected, setSelected] = useState('ph');
@@ -32,6 +34,7 @@ export default function CivicExplorer() {
   function choose(id) {
     const next = CIVIC_REGIONS.find((item) => item.id === id);
     setSelected(id);
+    setDossierOpen(true);
     setTab('overview');
     setCenter(projectCoordinate(next.coordinates));
     setGlobeCenter(normalizeGlobeCenter(next.coordinates));
@@ -80,21 +83,28 @@ export default function CivicExplorer() {
 
   return <>
     <Seo title="Jovexa Atlas: civic explorer prototype" description="An original worldwide civic map prototype with sample region dossiers, civilian layers and learning activities. Not live intelligence." path="/prototype/explorer" />
-    <div className={`atlas atlas--${theme}`}>
+    <main className={`atlas atlas--${theme} ${panelOpen ? '' : 'atlas--panel-closed'} ${dossierOpen ? '' : 'atlas--dossier-closed'}`}>
+      <a className="atlas-skip" href="#atlas-map">Skip to map</a>
       <header className="atlas-heading">
-        <div><p className="eyebrow">Jovexa concept lab / worldwide</p><h1>Atlas Civic Explorer</h1></div>
-        <Link to="/prototype/community">Open Orbit demo</Link>
+        <div><p className="eyebrow">Jovexa / civic observation workspace</p><h1>Atlas Civic Explorer</h1></div>
+        <div className="atlas-header-links"><Link to="/">Jovexa home</Link>
+          <Link to="/prototype/community">Orbit demo</Link></div>
       </header>
       <p className="atlas-disclosure"><strong>ILLUSTRATIVE PROTOTYPE — NOT LIVE DATA.</strong> Pins represent
         selected capitals, not active projects, incidents, people, or verified services. No military
         tracking, location collection, news ingestion, navigation, or financial rewards.</p>
       <div className="atlas-workspace">
-        <aside className="atlas-sidebar">
+        <aside className="atlas-sidebar" aria-label="Explorer tools and results">
           <nav aria-label="Explorer tools">
-            {[['regions', 'Regions'], ['layers', 'Layers'], ['feed', 'Sample feed'], ['about', 'Sources']].map(([id, title]) =>
+            {[['regions', 'Regions', 'R'], ['layers', 'Layers', 'L'], ['feed', 'Sample feed', 'F'], ['about', 'Sources', 'i']].map(([id, title, icon]) =>
               <button type="button" key={id} aria-current={panel === id ? 'page' : undefined}
-                onClick={() => setPanel(id)}>{title}</button>)}
+                aria-expanded={panel === id && panelOpen} aria-controls="atlas-tool-panel"
+                onClick={() => { setPanel(id); setPanelOpen(panel !== id || !panelOpen); }}>
+                <span className="atlas-tool-icon" aria-hidden="true">{icon}</span>{title}</button>)}
           </nav>
+          <div id="atlas-tool-panel" hidden={!panelOpen} className="atlas-tool-panel">
+          <button className="atlas-panel-close" type="button" aria-label="Close tools panel"
+            onClick={() => setPanelOpen(false)}>Close</button>
           {panel === 'regions' && <section>
             <h2>Explore regions</h2><label htmlFor="atlas-search">Search country, capital, or continent</label>
             <input id="atlas-search" type="search" maxLength={100} value={query} onChange={(event) => setQuery(event.target.value)} />
@@ -140,6 +150,7 @@ export default function CivicExplorer() {
             <p>No map tiles, trackers, location permission, private APIs, accounts, or server storage.
               Search, filters, and mission answers stay in page memory and reset on reload.</p>
           </section>}
+          </div>
         </aside>
         <section className="atlas-map-pane" aria-label="Worldwide civic map">
           <div className="atlas-map-toolbar">
@@ -155,7 +166,7 @@ export default function CivicExplorer() {
             {mode === 'globe' ? 'Drag to rotate the globe.' : 'Zoom in, then drag to pan the map.'}
             {' '}Use arrow keys on the map or the direction buttons. Choose any region from the list.
           </p>
-          <svg className={`atlas-map atlas-map--${mode}`} viewBox={viewport.join(' ')} role="group" tabIndex={0}
+          <svg id="atlas-map" className={`atlas-map atlas-map--${mode}`} viewBox={viewport.join(' ')} role="group" tabIndex={0}
             aria-describedby="atlas-map-help" aria-label="Illustrative world map with selectable capital markers"
             onPointerDown={startDrag} onPointerMove={moveDrag}
             onPointerUp={() => { drag.current = null; }} onPointerCancel={() => { drag.current = null; }}
@@ -202,7 +213,11 @@ export default function CivicExplorer() {
             <span key={layer.id}>{layer.name}</span>)}</div>
           <p className="atlas-map-caption">Natural Earth / approximate reference geography / not for navigation</p>
         </section>
-        <aside className="atlas-dossier" aria-label="Region dossier">
+        {!dossierOpen && <button type="button" className="atlas-reopen-dossier" onClick={() => setDossierOpen(true)}>
+          Open {region.name} dossier</button>}
+        <aside className="atlas-dossier" aria-label="Region dossier" hidden={!dossierOpen}>
+          <button className="atlas-panel-close" type="button" aria-label="Close region dossier"
+            onClick={() => setDossierOpen(false)}>Close</button>
           <p className="eyebrow">Sample region dossier</p><h2 aria-label={region.name}>
             <img className="atlas-flag atlas-flag--large" src={CIVIC_FLAGS[region.id]} alt={`Flag of ${region.name}`} />
             {region.name}</h2>
@@ -237,6 +252,6 @@ export default function CivicExplorer() {
           </section>}
         </aside>
       </div>
-    </div>
+    </main>
   </>;
 }

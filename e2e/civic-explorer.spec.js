@@ -182,3 +182,25 @@ test('touch rotation and 2D drag work without triggering region selection', asyn
     await context.close();
   }
 });
+
+test('desktop workspace is map-first with collapsible overlays and no corporate chrome', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/prototype/explorer');
+  await expect(page.getByRole('navigation', { name: 'Primary', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('contentinfo')).toHaveCount(0);
+  const map = await page.locator('.atlas-map-pane').boundingBox();
+  expect(map.width).toBe(1440);
+  expect(map.height).toBeGreaterThan(700);
+  expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight)).toBe(true);
+  await page.getByRole('button', { name: 'Close tools panel', exact: true }).click();
+  await expect(page.getByLabel('Search country, capital, or continent')).toBeHidden();
+  await page.getByRole('navigation', { name: 'Explorer tools' }).getByRole('button', { name: 'Regions', exact: true }).click();
+  await expect(page.getByLabel('Search country, capital, or continent')).toBeVisible();
+  await page.getByRole('button', { name: 'Close region dossier', exact: true }).click();
+  await expect(page.getByRole('complementary', { name: 'Region dossier', exact: true })).toBeHidden();
+  await page.getByRole('button', { name: 'Open Philippines dossier', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Philippines', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Close region dossier', exact: true }).click();
+  await page.locator('.atlas-region-list').getByRole('button', { name: /Canada Ottawa/ }).click();
+  await expect(page.getByRole('heading', { name: 'Canada', exact: true })).toBeVisible();
+});
