@@ -197,6 +197,43 @@ and the sitemap until a separate publication decision. No production auth or dat
 
 ### Atlas country-data preview
 
+Atlas also offers five original opt-in civilian public/reference layers through
+the Layers panel, separately from the ten original sample-capital pins:
+
+| Screenshot type | Atlas implementation / limits |
+| --- | --- |
+| Camera | Not connected; no private/unsecured CCTV or copied video feeds |
+| Incident | USGS magnitude 2.5+ past-day earthquake GeoJSON; preliminary, not all incidents |
+| Event | NASA EONET open natural events from past 30 days, limit 100; latest point per event, polygons/empty geometry explicitly counted as omitted |
+| Nuclear plant | Wikidata direct-class Q134447 reference coordinates, limit 100; may include closed/planned facilities, not operational status |
+| Port | Wikidata direct-class Q44782 reference coordinates, limit 100; incomplete directory, not port traffic/status |
+| Ship | No licensed AIS source connected |
+| Chokepoint | Four bundled schematic passage points, not operational checkpoints or closures |
+| Military aircraft | Operational real-time military tracking not offered |
+| Conflict | No licensed civilian reporting feed connected; no tactical positions |
+| Territory | Existing Natural Earth reference boundaries, not a legal determination |
+
+Network layers request directly from source after enabling; five-minute refreshes
+run only while enabled and the document is visible. Closing the tools panel does
+not hide an enabled map layer or stop its refreshes. Hiding the document aborts
+in-flight requests; returning requests only if the five-minute interval is due.
+Disabling a layer removes its markers and cancels its requests; leaving the route
+cancels every layer. Refresh cadence is based on monotonic elapsed time. Reference
+passages do not make external requests. There is no persistent storage or server,
+and no upstream secrets are required.
+
+Each response is limited to 1 MiB and 20 seconds. Each source fails independently;
+prior observations are retained with explicit stale/error labels, including on the
+map/dossier. Empty collections display no records, never invented points or safety
+claims. Markers are projected in 2D and clipped to the visible globe hemisphere;
+keyboard map controls and text lists expose source links/times. These are delayed
+reports for general visualization, not emergency alerts or verified live operations.
+The source and geographic coverage limits must remain visible in marketing.
+USGS-authored data is generally U.S. public domain; EONET's approximate metadata
+is displayed with NASA attribution/disclaimer; Wikidata structured data is CC0.
+Only metadata is rendered as escaped text; no proprietary icons, article text,
+video streams, imagery or private APIs are copied. See public/atlas-licenses.txt.
+
 `/prototype/explorer` includes 241 selectable Natural Earth geographic features
 from world-atlas countries-50m 2.0.2. These include territories and disputed units;
 they are not a definitive sovereign-state list or authoritative legal boundaries.

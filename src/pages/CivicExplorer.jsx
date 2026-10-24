@@ -7,6 +7,8 @@ import { CIVIC_FLAGS } from '../data/civic-flags.js';
 import { createCivicMap, MAP_COUNTRIES, normalizeGlobeCenter } from '../lib/civic-map.js';
 import CivicNews from '../components/CivicNews.jsx';
 import CountryDetails from '../components/CountryDetails.jsx';
+import PublicLayers from '../components/PublicLayers.jsx';
+import { PUBLIC_LAYERS } from '../lib/public-layers.js';
 import '@fontsource-variable/mona-sans/wght.css';
 import './civic-explorer.css';
 
@@ -17,6 +19,8 @@ export default function CivicExplorer() {
   const [countryQuery, setCountryQuery] = useState('');
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [showBorders, setShowBorders] = useState(true);
+  const [publicData, setPublicData] = useState({});
+  const [observationId, setObservationId] = useState(null);
   const [query, setQuery] = useState('');
   const [layers, setLayers] = useState(CIVIC_LAYERS.map((layer) => layer.id));
   const [selected, setSelected] = useState('ph');
@@ -36,11 +40,14 @@ export default function CivicExplorer() {
     ? [flatViewport[0] + flatViewport[2] / 4, flatViewport[1], flatViewport[2] / 2, flatViewport[3]]
     : flatViewport;
   const selectedVisible = visible.some((item) => item.id === selected);
+  const observations = PUBLIC_LAYERS.flatMap((layer) => (publicData[layer.id] ?? []).map((item) => ({ ...item, layer })));
+  const observation = observations.find((item) => item.id === observationId);
 
   function choose(id) {
     const next = CIVIC_REGIONS.find((item) => item.id === id);
     setSelected(id);
     setSelectedCountry(null);
+    setObservationId(null);
     setDossierOpen(true);
     setTab('overview');
     setCenter(projectCoordinate(next.coordinates));
@@ -49,6 +56,7 @@ export default function CivicExplorer() {
   }
 
   function chooseCountry(country) {
+    setObservationId(null);
     setSelectedCountry(country);
     setDossierOpen(true);
     setCenter(projectCoordinate(country.coordinates));
@@ -99,7 +107,7 @@ export default function CivicExplorer() {
   }
 
   return <>
-    <Seo title="Jovexa Atlas: civic explorer prototype" description="An original worldwide civic map prototype with sample region dossiers, civilian layers and learning activities. Not live intelligence." path="/prototype/explorer" />
+    <Seo title="Jovexa Atlas: civic explorer prototype" description="An original civic map with opt-in public hazard reports, reference infrastructure and sourced country dossiers. Not emergency alerts or live intelligence." path="/prototype/explorer" />
     <main className={`atlas atlas--${theme} ${panelOpen ? '' : 'atlas--panel-closed'} ${dossierOpen ? '' : 'atlas--dossier-closed'}`}>
       <a className="atlas-skip" href="#atlas-map">Skip to map</a>
       <header className="atlas-heading">
@@ -107,8 +115,9 @@ export default function CivicExplorer() {
         <div className="atlas-header-links"><Link to="/">Jovexa home</Link>
           <Link to="/prototype/community">Orbit demo</Link></div>
       </header>
-      <p className="atlas-disclosure"><strong>MAP: SAMPLE DATA / NEWS: ON-DEMAND PUBLISHER RSS.</strong> Pins represent
-        selected capitals; borders are Natural Earth reference data. Country statistics show source years, not live counters. No military
+      <p className="atlas-disclosure"><strong>MAP: SAMPLE DATA + OPT-IN PUBLIC OBSERVATIONS / NEWS: PUBLISHER RSS.</strong> Flag pins are
+        sample capitals; enabled public layers have source dates and limited coverage. Borders/facilities are reference data.
+        Country statistics are annual, not live counters. No military
         tracking, location collection, navigation, or financial rewards.</p>
       <div className="atlas-workspace">
         <aside className="atlas-sidebar" aria-label="Explorer tools and results">
@@ -127,7 +136,7 @@ export default function CivicExplorer() {
             <input id="atlas-search" type="search" maxLength={100} value={query} onChange={(event) => setQuery(event.target.value)} />
             <p role="status">{visible.length} of {CIVIC_REGIONS.length} sample regions shown</p>
             <div className="atlas-region-list">{visible.map((item) => <button type="button" key={item.id}
-              aria-pressed={!selectedCountry && selected === item.id} onClick={() => choose(item.id)}>
+              aria-pressed={!selectedCountry && !observation && selected === item.id} onClick={() => choose(item.id)}>
               <strong><img className="atlas-flag" src={CIVIC_FLAGS[item.id]} alt="" />{item.name}</strong>
               <span>{item.city} / {item.continent}</span></button>)}</div>
             {!visible.length && <p>No matching regions. Clear the search or enable more layers.</p>}
@@ -144,8 +153,9 @@ export default function CivicExplorer() {
                 aria-pressed={selectedCountry?.id === country.id} onClick={() => chooseCountry(country)}>
                 <strong>{country.name}</strong><span>{country.iso3 ?? 'ISO mapping unavailable'}</span></button>)}</div>
           </section>}
+          <div hidden={panel !== 'layers'}><PublicLayers onChange={setPublicData} /></div>
           {panel === 'layers' && <section>
-            <h2>Civilian layers</h2><p>Categories demonstrate filtering; they do not represent actual local activity.</p>
+            <h2>Reference borders & sample pins</h2><p>The following capital categories are samples, separate from public observations above.</p>
             <label className="atlas-layer"><input type="checkbox" checked={showBorders}
               onChange={(event) => setShowBorders(event.target.checked)} />Reference country boundaries</label>
             {CIVIC_LAYERS.map((layer) => <label className="atlas-layer" key={layer.id}>
@@ -232,14 +242,27 @@ export default function CivicExplorer() {
               const [x, y] = map.project(item.coordinates);
               const color = CIVIC_LAYERS.find((layer) => layer.id === item.layer).color;
               return <g key={item.id} role="button" tabIndex={0} aria-label={`Explore ${item.name}`}
-                aria-pressed={!selectedCountry && selected === item.id} className={`atlas-pin ${!selectedCountry && selected === item.id ? 'atlas-pin--selected' : ''}`}
+                aria-pressed={!selectedCountry && !observation && selected === item.id} className={`atlas-pin ${!selectedCountry && !observation && selected === item.id ? 'atlas-pin--selected' : ''}`}
                 onClick={() => choose(item.id)} onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(item.id); }
                 }}>
                 <title>{item.name} / sample reference marker</title>
                 <rect x={x - 12} y={y - 20} width="30" height="32" fill="transparent" />
-                <circle cx={x} cy={y} r={!selectedCountry && selected === item.id ? 6 : 4} fill={color} stroke="#102333" strokeWidth="1.5" />
+                <circle cx={x} cy={y} r={!selectedCountry && !observation && selected === item.id ? 6 : 4} fill={color} stroke="#102333" strokeWidth="1.5" />
                 <image href={CIVIC_FLAGS[item.id]} x={x - 10} y={y - 20} width="20" height="15" aria-hidden="true" />
+              </g>;
+            })}
+            {observations.filter((item) => map.isVisible(item.coordinates)).map((item) => {
+              const [x, y] = map.project(item.coordinates);
+              const activate = () => { setObservationId(item.id); setSelectedCountry(null); setDossierOpen(true); };
+              return <g key={item.id} className="atlas-pin atlas-observation" role="button" tabIndex={0}
+                aria-label={`Inspect ${item.layer.name}: ${item.title}`} aria-pressed={observationId === item.id}
+                onClick={activate} onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); activate(); }
+                }}>
+                <title>{item.title} / {item.stale ? 'STALE retained report' : item.observed ?? 'Reference location'}</title>
+                <circle cx={x} cy={y} r="5" fill={item.layer.color} stroke="#142530" />
+                <text x={x} y={y + 2} textAnchor="middle" fontSize="6" fill="#102333" pointerEvents="none">{item.layer.symbol}</text>
               </g>;
             })}
           </svg>
@@ -254,14 +277,23 @@ export default function CivicExplorer() {
           </div>
           <div className="atlas-legend" aria-label="Map legend">{CIVIC_LAYERS.map((layer) =>
             <span key={layer.id}>{layer.name}</span>)}</div>
-          <p className="atlas-map-caption">Natural Earth / approximate reference geography / not for navigation</p>
+          <p className="atlas-map-caption">Natural Earth / not for navigation / {observations.length} public/reference markers
+            {observations.some((item) => item.stale) && ' / STALE retained layer: inspect Layers for errors'}</p>
         </section>
         {!dossierOpen && <button type="button" className="atlas-reopen-dossier" onClick={() => setDossierOpen(true)}>
-          Open {selectedCountry?.name ?? region.name} dossier</button>}
+          Open {observation?.title ?? selectedCountry?.name ?? region.name} dossier</button>}
         <aside className="atlas-dossier" aria-label="Region dossier" hidden={!dossierOpen}>
           <button className="atlas-panel-close" type="button" aria-label="Close region dossier"
             onClick={() => setDossierOpen(false)}>Close</button>
-          {selectedCountry ? <>
+          {observation ? <section aria-label="Public observation dossier">
+            <p className="eyebrow">{observation.layer.name}</p><h2>{observation.title}</h2>
+            {observation.stale && <p role="alert">Stale retained report: latest refresh failed. Not current.</p>}
+            <p>{observation.note}</p><p>Observation: {observation.observed ? new Date(observation.observed).toUTCString() : 'Reference / source date not supplied'}.</p>
+            <p>Retrieved: {new Date(observation.retrieved).toUTCString()}.</p>
+            {observation.updated && <p>Provider revised: {new Date(observation.updated).toUTCString()}.</p>}
+            <a href={observation.url} target="_blank" rel="noopener noreferrer">Inspect original source</a>
+            <p>{observation.layer.description}</p>
+          </section> : selectedCountry ? <>
             <p className="eyebrow">Sourced country dossier</p><h2>{selectedCountry.name}</h2>
             <CountryDetails key={selectedCountry.id} country={selectedCountry} />
           </> : <>

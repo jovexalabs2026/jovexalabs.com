@@ -74,6 +74,15 @@ export default function Privacy() {
           organization records, user profile or verification documents are sent.
         </p>
         <p>
+          Enabling an Atlas public observation layer contacts USGS (earthquakes), NASA EONET
+          (natural events) or Wikidata (reference ports/plants) directly. Providers receive your IP
+          address; requests omit credentials and referrer. Enabled network layers refresh every
+          five minutes while the page is visible, including when its tools panel is closed.
+          Disable the layer to stop requests. Leaving the page stops refreshes; no consent,
+          observations or layer settings are persisted. Reference passage points are bundled
+          locally; opening a source link visits that provider under its own policies.
+        </p>
+        <p>
           Jovexa applications may rely on third-party services such as Google Play Services,
           Google AdMob, analytics providers, and crash reporting tools. Each third-party service
           operates under its own privacy policy.

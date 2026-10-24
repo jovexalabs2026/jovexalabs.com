@@ -1,5 +1,27 @@
 Jovexa Atlas mapping notices
 
+Public observation layers:
+- U.S. Geological Survey: magnitude 2.5+ past-day earthquake GeoJSON observations.
+  USGS-produced data is generally U.S. public domain; no third-party imagery
+  or branding is copied. Credit: U.S. Geological Survey.
+  https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php
+  https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits
+- NASA EONET: event metadata only, for general information/visualization.
+  Spatial/temporal extents are approximate and are not official hazard extents.
+  No source article bodies, images or external linked datasets are copied.
+  https://eonet.gsfc.nasa.gov/docs/v3
+  https://eonet.gsfc.nasa.gov/what-is-eonet#disclaimer
+- Wikidata ports and nuclear plants: CC0 structured names/coordinates, limited
+  direct-class query, not a complete directory or live operational status.
+  https://www.wikidata.org/wiki/Wikidata:Licensing
+- Four approximate maritime-passage points are original schematic geographic
+  reference points, not copied polygon geometry or navigation coordinates.
+  Further reading: https://en.wikipedia.org/wiki/Suez_Canal
+  https://en.wikipedia.org/wiki/Panama_Canal
+  https://en.wikipedia.org/wiki/Strait_of_Malacca
+  https://en.wikipedia.org/wiki/Strait_of_Hormuz
+No source endorsement, live safety status or completeness is implied.
+
 Country statistics are requested from World Bank Open Data, with original
 indicator IDs, observation years and provider-update dates displayed.
 Standard dataset license: CC BY 4.0, subject to individual dataset terms:

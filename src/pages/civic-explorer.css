@@ -64,6 +64,10 @@
 .atlas .atlas-stat-value { font-size: 21px; font-weight: 650; color: #d0f6e8; margin: 8px 0; }
 .atlas-grid-line { stroke: var(--atlas-grid); opacity: .65; }
 .atlas-pin { cursor: pointer; }
+.atlas-public-layer { border-bottom: 1px solid var(--atlas-edge); padding: 12px 0; }
+.atlas-public-layer [role=alert] { color: #ffcea7; }
+.atlas-layer-results { display: grid; gap: 5px; max-height: 180px; overflow-y: auto; margin: 12px 0; }
+.atlas-layer-results button { text-align: left; overflow-wrap: anywhere; }
 .atlas-pin:focus { outline: none; }
 .atlas-pin:focus circle, .atlas-pin--selected circle { stroke: #fff4b6; stroke-width: 3px; }
 .atlas-map-toolbar {
