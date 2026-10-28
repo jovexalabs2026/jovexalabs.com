@@ -3,13 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
+  { to: '/services', label: 'Services' },
+  { to: '/pricing', label: 'Pricing' },
+  { to: '/templates', label: 'Templates' },
+  { to: '/portfolio', label: 'Portfolio' },
   { to: '/about', label: 'About' },
   { to: '/products', label: 'Products' },
   { to: '/learn', label: 'Learn' },
   { to: '/digital2030', label: 'Digital 2030' },
-  { to: '/roadmap', label: 'Roadmap' },
-  { to: '/open-source', label: 'Open Source' },
-  { to: '/developers', label: 'Developers' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -55,6 +56,13 @@ export default function Header() {
               {link.label}
             </NavLink>
           ))}
+          <NavLink
+            to="/website-development"
+            className="site-nav__quote"
+            onClick={() => setOpen(false)}
+          >
+            Get a Free Quote
+          </NavLink>
         </nav>
       </div>
     </header>

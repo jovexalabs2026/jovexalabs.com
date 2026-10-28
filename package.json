@@ -9,6 +9,8 @@
     "lint": "oxlint",
     "test": "node --test tests/*.test.js",
     "test:e2e": "playwright test",
+    "simulate": "node tool/run-simulation.mjs",
+    "test:simulation": "node tool/run-simulation.mjs --test",
     "build:pages": "npm run build && node tool/prepare-pages.mjs",
     "preview": "vite preview"
   },

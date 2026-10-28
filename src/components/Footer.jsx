@@ -2,11 +2,22 @@ import { Link } from 'react-router-dom';
 
 const COLUMNS = [
   {
+    heading: 'Digital Solutions',
+    links: [
+      { to: '/services', label: 'Services' },
+      { to: '/pricing', label: 'Pricing' },
+      { to: '/templates', label: 'Website demos' },
+      { to: '/portfolio', label: 'Portfolio' },
+      { to: '/website-development', label: 'Get a Free Quote' },
+    ],
+  },
+  {
     heading: 'Company',
     links: [
       { to: '/about', label: 'About' },
       { to: '/roadmap', label: 'Roadmap' },
       { to: '/contact', label: 'Contact' },
+      { to: '/digital2030', label: 'Digital 2030' },
     ],
   },
   {
@@ -53,10 +64,10 @@ export default function Footer() {
             <img className="brand__logo" src="/brand/logo-mark.png" alt="" aria-hidden="true" />{' '}
             Jovexa Labs
           </p>
-          <p className="site-footer__tagline">Software · Ideas · Real Impact</p>
+          <p className="site-footer__tagline">Jovexa Labs Digital Solutions</p>
           <p className="site-footer__tagline">
-            Independent software studio building apps, games, web platforms, and open-source
-            tools. Build software for a brighter tomorrow.
+            An independent software studio and Philippine-based provider of website and software
+            development services.
           </p>
         </div>
 
@@ -79,6 +90,11 @@ export default function Footer() {
       </div>
 
       <div className="site-footer__bottom">
+        <p className="site-footer__copy">
+          Client services are provided by Jovexa Software Development Services in the Philippines.
+          Quotes and timelines are confirmed in writing; third-party and applicable tax costs may
+          apply.
+        </p>
         <p className="site-footer__copy">
           &copy; {new Date().getFullYear()} Jovexa Software Development Services. All rights
           reserved.

@@ -28,6 +28,14 @@ import Terms from './pages/Terms.jsx';
 import NotFound from './pages/NotFound.jsx';
 import { DigitalLayout, DigitalHome, DigitalAI, DigitalEducation, DigitalServices,
   DigitalSafety, DigitalBusiness, DigitalActivity } from './pages/Digital2030.jsx';
+import Services from './pages/Services.jsx';
+import Pricing from './pages/Pricing.jsx';
+import Templates from './pages/Templates.jsx';
+import TemplateDetail from './pages/TemplateDetail.jsx';
+import WebsiteDevelopment from './pages/WebsiteDevelopment.jsx';
+import Admin from './pages/Admin.jsx';
+import QuoteResponse from './pages/QuoteResponse.jsx';
+import Portfolio from './pages/Portfolio.jsx';
 
 const CommunityPrototype = lazy(() => import('./pages/CommunityPrototype.jsx'));
 const CivicExplorer = lazy(() => import('./pages/CivicExplorer.jsx'));
@@ -42,6 +50,14 @@ export default function App() {
       } />
       <Route element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="services" element={<Services />} />
+        <Route path="pricing" element={<Pricing />} />
+        <Route path="templates" element={<Templates />} />
+        <Route path="templates/:templateSlug" element={<TemplateDetail />} />
+        <Route path="website-development" element={<WebsiteDevelopment />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="admin" element={<Admin />} />
+        <Route path="quote/:token" element={<QuoteResponse />} />
         <Route path="about" element={<About />} />
         <Route path="products" element={<Products />} />
         <Route path="products/dash-rush" element={<DashRush />} />

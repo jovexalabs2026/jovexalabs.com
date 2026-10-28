@@ -54,26 +54,25 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Software, Apps, Games & Open Technology"
-        description="Jovexa Labs is an independent software studio building modern mobile apps, games, web platforms, developer tools, and open-source software."
+        title="Custom Websites, Software & Digital Solutions"
+        description="Jovexa Labs builds its own software products and offers custom websites, web platforms, and digital solutions to businesses worldwide."
         path="/"
       />
 
       <section className="hero">
         <div className="hero__inner">
-          <p className="eyebrow">Independent Software Studio</p>
-          <h1>Software built to turn ideas into impact.</h1>
+          <p className="eyebrow">Jovexa Labs Digital Solutions</p>
+          <h1>Custom websites, software &amp; digital solutions for businesses worldwide.</h1>
           <p className="hero__lead">
-            Jovexa Labs designs and develops modern applications, games, web platforms, developer
-            tools, and open-source software, built to be useful, accessible, and dependable for
-            everyone.
+            From your business idea to a professional digital experience. We build our own
+            products and work with businesses on responsive websites and custom software.
           </p>
           <div className="hero__actions">
-            <Link className="btn btn--primary" to="/products">
-              Explore Products
+            <Link className="btn btn--primary" to="/website-development">
+              Get a Free Quote
             </Link>
-            <Link className="btn btn--secondary" to="/digital2030">
-              Discover Digital 2030
+            <Link className="btn btn--secondary" to="/services">
+              Explore Services
             </Link>
           </div>
           <ul className="hero__stats" aria-label="Quick facts">
@@ -99,6 +98,52 @@ export default function Home() {
             width="303"
             height="396"
           />
+        </div>
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">Websites for growing businesses</p>
+        <h2>Start with a clear scope and a practical plan.</h2>
+        <p className="section__lead">
+          Explore transparent USD package starting points, original website concepts, and a
+          no-obligation project inquiry. Final deliverables and pricing are agreed in writing.
+        </p>
+        <div className="hero__actions">
+          <Link className="btn btn--primary" to="/pricing">View website packages</Link>
+          <Link className="btn btn--secondary" to="/templates">Browse original demos</Link>
+        </div>
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">A clear process</p>
+        <h2>From first conversation to handover</h2>
+        <div className="grid grid--three">
+          {[
+            ['01 · Understand', 'Tell us about your goals, audience, required features, budget, and timeframe.'],
+            ['02 · Agree scope', 'Review a written quotation that sets deliverables, exclusions, milestones, and third-party costs.'],
+            ['03 · Build & review', 'Work through the agreed review rounds, test the result, and plan a documented handover.'],
+          ].map(([title, text]) => (
+            <article className="card" key={title}><h3>{title}</h3><p>{text}</p></article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="feature-banner">
+          <div>
+            <p className="eyebrow">Original demonstrations</p>
+            <h2>See a starting direction for your industry.</h2>
+            <p className="section__lead">
+              Browse ten original sample concepts. These are demonstrations, not client commissions.
+            </p>
+            <div className="hero__actions">
+              <Link className="btn btn--primary" to="/templates">Browse website demos</Link>
+              <Link className="btn btn--secondary" to="/portfolio">View portfolio</Link>
+            </div>
+          </div>
+          <div className="feature-banner__visual" aria-hidden="true">
+            <span className="feature-banner__glyph">✦</span>
+          </div>
         </div>
       </section>
 
@@ -174,6 +219,19 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="section section--narrow">
+        <p className="eyebrow">Quick answers</p>
+        <h2>Before we begin</h2>
+        <dl className="faq">
+          <dt>Are your listed prices in US dollars?</dt>
+          <dd>Yes. Prices shown are USD starting points. Applicable taxes and third-party charges may cost extra.</dd>
+          <dt>Are the demos existing client websites?</dt>
+          <dd>No. They are original fictional demonstrations and are labeled as such.</dd>
+          <dt>Is there online payment or a project dashboard?</dt>
+          <dd>No live payments or customer account portal are available in this website release.</dd>
+        </dl>
       </section>
 
       <section className="section">

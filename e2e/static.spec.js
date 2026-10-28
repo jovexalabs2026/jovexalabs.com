@@ -129,6 +129,51 @@ test('developer guides, project details and roadmap are connected and reloadable
   expect(errors).toEqual([]);
 });
 
+test('services, pricing, template previews, and local quote drafts work', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+
+  await page.goto('/pricing');
+  await expect(page.getByRole('heading', { name: 'Website development pricing' })).toBeVisible();
+  await expect(page.locator('.pricing-card')).toHaveCount(4);
+  await expect(page.locator('main')).toContainText('up to 20 initial product listings');
+
+  await page.goto('/templates');
+  await expect(page.locator('.template-card')).toHaveCount(10);
+  await page.getByLabel('Search demos').fill('restaurant');
+  await expect(page.locator('.template-card')).toHaveCount(1);
+  await expect(page.locator('.template-card')).toContainText('Restaurant & Cafe');
+  await page.getByLabel('Search demos').fill('');
+  await page.getByLabel('Industry').selectOption('Property & construction');
+  await expect(page.locator('.template-card')).toHaveCount(2);
+
+  await page.goto('/templates/restaurant');
+  await expect(page.getByRole('heading', { level: 1, name: 'Restaurant & Cafe website demo' })).toBeVisible();
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://jovexalabs.com/templates/restaurant');
+  await page.getByRole('button', { name: 'Mobile' }).click();
+  await expect(page.locator('.demo-frame')).toHaveClass(/demo-frame--mobile/);
+  await page.getByRole('button', { name: 'Ask about a table' }).click();
+  await page.getByLabel('Sample date').fill('2026-06-18');
+  await page.getByRole('button', { name: 'Show sample inquiry response' }).click();
+  await expect(page.getByRole('status')).toContainText('Nothing was submitted or saved');
+
+  await page.goto('/website-development?package=ecommerce&template=clothing-store');
+  await expect(page.getByRole('heading', { name: 'Professional business websites starting at $149 USD.' })).toBeVisible();
+  await expect(page.locator('select[name="package"]')).toHaveValue('ecommerce');
+  await expect(page.locator('select[name="template"]')).toHaveValue('clothing-store');
+  await page.getByLabel('Your name').fill('Sample Customer');
+  await page.getByLabel('Email address').fill('customer@example.test');
+  await page.getByLabel('Country').fill('Philippines');
+  await page.getByLabel('Project description').fill('A demonstration inquiry; do not send.');
+  await page.getByLabel(/I have read the/).check();
+  await page.getByRole('button', { name: 'Prepare email inquiry' }).click();
+  await expect(page.getByRole('status')).toContainText('Nothing has been sent');
+  const draft = page.getByRole('link', { name: 'Open draft in your email app' });
+  await expect(draft).toHaveAttribute('href', /^mailto:admin@jovexalabs\.com\?/);
+  await expect(draft).toHaveAttribute('href', /Online%20Clothing%20Store/);
+  expect(errors).toEqual([]);
+});
+
 test('public contributions do not require private repository access or grant a source license', async ({ page }) => {
   await page.goto('/learn/community');
   await expect(page.locator('main a[href*="jovexalabs.com/issues"], main a[href*="jovexalabs.com/pulls"]')).toHaveCount(0);

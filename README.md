@@ -13,6 +13,18 @@ open-source software. Dash Rush: Endless Run & Jump is a Jovexa Labs product.
 - [Vite](https://vite.dev/)
 - [React](https://react.dev/) + [React Router](https://reactrouter.com/)
 - Plain CSS (no CSS framework/build dependency)
+- Static configuration-driven service packages and original website-demo concepts
+
+## Digital solutions launch pages
+
+The site includes `/services`, `/pricing`, `/templates`, individual `/templates/<slug>` demos,
+and `/website-development`. Prices are maintained in `src/data/services.js` and checked by
+`npm test`; changes to published price points should be reviewed and released explicitly.
+
+The deployed project remains a static GitHub Pages application. Outside the opt-in local
+simulation, the quote form prepares an email draft; the deployed site does not store inquiries,
+provide a live admin service, authenticate administrators, or process payments. There is no live
+Meta Pixel or analytics integration. Demo interactions are illustrative only.
 
 ## Development
 
@@ -36,6 +48,30 @@ Output is written to `dist/`.
 ```bash
 npm run preview
 ```
+
+### Local service simulation
+
+The local simulator exercises inquiry review, quotations, project progress, editable package and
+demo catalogs, permission-gated portfolio entries, and fictional sandbox invoice events. It
+binds its API to `127.0.0.1`, writes only to the ignored `.simulation-data/` folder, and sends no
+email, external analytics, or payment. Do not use real customer data or treat the local setup as
+a production security boundary or deployed administrative service.
+
+```bash
+npm run simulate
+```
+
+Open `http://127.0.0.1:5173/admin` and use the one-time setup token printed in the terminal.
+To exercise the full simulated customer-to-admin workflow with a temporary data file and
+automatically removed test state, run:
+
+```bash
+npm test
+npm run test:simulation
+```
+
+The simulator stores its local state between normal runs. To reset it, stop the simulator and
+remove the specific `.simulation-data/state.json` file. Do not deploy the local simulation API.
 
 ## Deployment
 

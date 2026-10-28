@@ -73,8 +73,9 @@ export default function Contact() {
           </dd>
           <dt>Do you take on client / contract work?</dt>
           <dd>
-            Our focus is on our own products, but we are open to hearing about interesting
-            opportunities via <a href="mailto:admin@jovexalabs.com">admin@jovexalabs.com</a>.
+            Yes. Explore our <a href="/services">website and software services</a> or{' '}
+            <a href="/website-development">prepare a project inquiry</a>. The inquiry form creates
+            an email draft on your device; it is received only if you send it.
           </dd>
           <dt>How do I report a bug?</dt>
           <dd>

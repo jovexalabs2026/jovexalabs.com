@@ -36,6 +36,52 @@ export default function Terms() {
           You agree to use our Services only for lawful purposes and in accordance with these
           Terms.
         </p>
+        <h2>Client development services</h2>
+        <p>
+          Website and software packages shown on this site are starting scopes. A project does not
+          begin until the parties agree in writing on its deliverables, exclusions, timeline,
+          price, payment milestones, and any third-party costs. Displayed prices are in USD;
+          applicable taxes, domain registration, hosting, subscriptions, payment processing, and
+          advertising costs may be additional. The website does not accept or process payments.
+        </p>
+        <p>
+          Service terms on this website are informational drafts and are not a signed project
+          agreement or legal or tax advice. Have project and business terms reviewed by a qualified
+          professional before relying on them.
+        </p>
+        <h2>Project scope, review, and handover</h2>
+        <p>
+          A project agreement should identify the approved scope, assumptions, deliverables,
+          customer responsibilities, timeline, revision rounds, acceptance criteria, source-code
+          and intellectual-property rights, and the handover date. Additional work or revisions
+          outside the agreed scope require written approval and may change price and schedule.
+          Rights in custom deliverables transfer only as expressly stated in the signed agreement
+          and after agreed payment; third-party software and assets remain subject to their own
+          licences.
+        </p>
+        <h2>Deposits, cancellation, and refunds</h2>
+        <p>
+          The proposed 50% initial deposit and 50% pre-handover balance are discussion terms, not
+          an active offer to collect payment. The project agreement must define milestone
+          acceptance, cancellation, treatment of completed work and committed third-party costs,
+          any applicable refund, and the process for raising a billing dispute. No refund or
+          cancellation policy is finalized here. Mandatory consumer rights under applicable law
+          are not waived by this draft.
+        </p>
+        <h2>Maintenance</h2>
+        <p>
+          Any maintenance service requires a separate written plan that identifies included
+          update time, supported systems, response expectations, backup responsibility, excluded
+          development, third-party fees, renewal, and cancellation terms. The website's
+          maintenance description does not promise uptime or emergency coverage.
+        </p>
+        <h2>Invoices and payment methods</h2>
+        <p>
+          The website does not issue tax invoices, accept card information, or process live
+          payments. Payment method, currency, due dates, taxes, and any provider charges must be
+          stated in an approved invoice and project agreement. Never send card numbers, security
+          codes, or passwords by email.
+        </p>
 
         <h2>Intellectual Property</h2>
         <p>

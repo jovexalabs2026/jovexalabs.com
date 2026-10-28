@@ -50,13 +50,46 @@ export default function Roadmap() {
         <p className="eyebrow">Roadmap</p>
         <h1>Goals &amp; Future Plans</h1>
         <p className="hero__lead">
-          We build in the open where we can. This roadmap shows what we are working on today and
-          the direction we are heading, from our first game to a full family of software
-          products.
+          Jovexa Labs is both an independent product studio and a provider of client software
+          services. This roadmap describes goals, not delivery promises; historical product
+          milestones remain separate from proposed service targets.
         </p>
       </section>
-
       <section className="section section--narrow">
+        <p className="eyebrow">Proposed client services roadmap</p>
+        <h2>Commercial Services Foundation — Q4 2026</h2>
+        <p>These are targets for planning, not completed milestones or guaranteed launch dates.</p>
+        <ul className="list">
+          <li>International website development service launch</li>
+          <li>Professional pricing and quotation experience</li>
+          <li>Original website template demonstrations</li>
+          <li>Portfolio showcase and improved company website</li>
+          <li>Customer inquiry management and initial international marketing</li>
+        </ul>
+        <h2>Customer Growth — Q1 2027</h2>
+        <ul className="list">
+          <li>Expand the template library and improve client onboarding</li>
+          <li>Introduce maintenance subscriptions and reusable website components</li>
+          <li>Improve quotation processes and expand business development channels</li>
+        </ul>
+        <h2>Advanced Development Services — Q2 2027</h2>
+        <ul className="list">
+          <li>Custom web applications, e-commerce integrations, and business dashboards</li>
+          <li>Booking platforms, internal production tools, and improved project tracking</li>
+        </ul>
+        <h2>Platform Expansion — Q3–Q4 2027</h2>
+        <ul className="list">
+          <li>Explore an advanced visual website production tool and automated deployment workflows</li>
+          <li>Consider an optional customer portal and expanded international market support</li>
+        </ul>
+        <p className="fine-print">
+          Any future visual editing or customer portal depends on available resources, security
+          design, customer validation, and separate approval. No such administrative system is
+          available in this static website release.
+        </p>
+      </section>
+      <section className="section section--narrow">
+        <p className="eyebrow">Existing product roadmap</p>
         <ol className="timeline">
           {PHASES.map((phase) => (
             <li className="timeline__item" key={phase.label}>

@@ -27,6 +27,27 @@ export default function Privacy() {
           Hosting providers may process ordinary request metadata under their own policies.
         </p>
         <p>
+          The website-development inquiry form runs in your browser and creates an email draft
+          addressed to admin@jovexalabs.com. This website does not submit or store the form
+          contents. If you open and send the draft, your email provider and our business mailbox
+          process that message under their respective systems and policies. Do not include
+          passwords, payment details, identity documents, or other sensitive information.
+        </p>
+        <p>
+          When the optional localhost simulation is deliberately started by a developer, the
+          simulation API stores submitted test inquiries and administrative records in a local
+          JSON file. The simulator is not part of the static public website, must not be used for
+          real customer data, and has no external email or payment connection. Campaign parameters
+          may be included in an inquiry only when present in the submitted URL; no cookie-based
+          campaign tracking or third-party analytics pixel is enabled.
+        </p>
+        <p>
+          This website uses no analytics or advertising cookies. Learning progress and Code Lab
+          drafts are stored locally in the browser as described below. If you send an email using
+          your own mail client, your email provider and our mailbox process the message. For
+          privacy questions or requests, contact admin@jovexalabs.com.
+        </p>
+        <p>
           Some Jovexa applications and this website may collect limited information necessary to
           provide and improve our services. We do not collect more information than is reasonably
           needed for the stated purpose.
