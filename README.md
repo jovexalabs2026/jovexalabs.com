@@ -4,9 +4,10 @@ Official website: https://jovexalabs.com
 
 ## About
 
-The official website for Jovexa Labs (Jovexa Software Development Services) — a Philippine
-software development business building mobile apps, games, web platforms, developer tools, and
-open-source software. Dash Rush: Endless Run & Jump is a Jovexa Labs product.
+The official website for Jovexa Labs (Jovexa Software Development Services) — an independent
+software development studio building mobile apps, games, web platforms, developer tools, and
+open-source software for clients and users worldwide. Dash Rush: Endless Run & Jump is a Jovexa
+Labs product.
 
 ## Tech Stack
 
@@ -81,8 +82,8 @@ which is copied into the build output automatically.
 
 ## Limited Digital 2030 public release
 
-The `release/digital2030-static` branch adds public education links, an official-agency directory,
-local message-warning heuristics, and browser-only business drafts. It preserves corporate pages,
+The `release/digital2030-static` branch adds public education links, an official government-portal
+directory, local message-warning heuristics, and browser-only business drafts. It preserves corporate pages,
 products, and existing Jovexa Learn resources. Live AI, accounts, authoritative completion
 certificates, private PHBIN operations, document uploads, and administration are unavailable.
 This is not the production launch of the separate authenticated PHBIN/Next.js application.
@@ -122,7 +123,7 @@ Rollback: use the prior Pages deployment if available, or redeploy a previously 
 static build. The unchanged corporate `main` / GitHub Pages deployment is independent.
 There is no production database or private-document storage in this static release to restore.
 No disaster-recovery claim is made for the separate backend. Domain cutover requires a full DNS
-backup and explicit approval, preserving mail records. Legal/privacy/retention and Philippine
+backup and explicit approval, preserving mail records. Legal/privacy/retention and qualified
 professional review remain required; technical deployment is not legal compliance.
 
 ## Atlas civic-explorer prototype

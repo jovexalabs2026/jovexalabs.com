@@ -1,7 +1,11 @@
-export function documentTotal(quantity, price) {
+const CURRENCY_CODE = /^[A-Za-z]{3}$/;
+
+export function documentTotal(quantity, price, currency = "USD") {
     if (!/^\d{1,5}$/.test(quantity) || !/^\d{1,8}(?:\.\d{1,2})?$/.test(price)) {
-        throw new Error("Use a whole quantity (1–99,999) and a non-negative PHP price with at most two decimals.");
+        throw new Error("Use a whole quantity (1–99,999) and a non-negative unit price with at most two decimals.");
     }
+    if (!CURRENCY_CODE.test(currency))
+        throw new Error("Use a three-letter currency code such as USD or EUR.");
     const count = Number(quantity);
     if (count < 1)
         throw new Error("Quantity must be at least one.");
@@ -10,7 +14,13 @@ export function documentTotal(quantity, price) {
     const total = count * cents;
     if (!Number.isSafeInteger(total))
         throw new Error("The total exceeds the supported amount.");
-    return { cents: total, formatted: new Intl.NumberFormat("en-PH", { style: "currency", currency: "PHP" }).format(total / 100) };
+    const code = currency.toUpperCase();
+    // Always show two decimals so the output matches the minor-unit arithmetic above.
+    const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency", currency: code, currencyDisplay: "code",
+        minimumFractionDigits: 2, maximumFractionDigits: 2,
+    }).format(total / 100);
+    return { cents: total, currency: code, formatted };
 }
 export function businessPlan(business, customer, offer) {
     if ([business, customer, offer].some((value) => !value.trim() || value.length > 500)) {

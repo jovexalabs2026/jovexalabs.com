@@ -70,13 +70,14 @@ export default function DeveloperDocs() {
           A lack of warnings is not a safety guarantee.</li>
         <li><Link to="/digital2030/business">Business drafts:</Link> choose a template, enter
           fictional or non-sensitive details, and generate locally. Quotation and invoice totals
-          use whole quantities and PHP prices with at most two decimal places.</li>
+          use whole quantities, a three-letter currency code, and unit prices with at most two
+          decimal places.</li>
         <li>Print a generated draft using the browser print dialog. Check its details before use.
-          Drafts are not saved and are not BIR-authorized tax invoices.</li>
-        <li><Link to="/digital2030/services">Public services:</Link> follow an official agency
-          link and confirm current requirements there. Jovexa Labs does not collect government login credentials.</li>
+          Drafts are not saved and are not official tax invoices.</li>
+        <li><Link to="/digital2030/services">Public services:</Link> follow an official government
+          portal link and confirm current requirements there. Jovexa Labs does not collect government login credentials.</li>
       </ul>
-      <p>Live AI, accounts, PHBIN issuance, private documents, and administration are not available here.</p>
+      <p>Live AI, accounts, business verification, private documents, and administration are not available here.</p>
 
       <h2 id="feedback">Feedback and contributions</h2>
       <p>Email <a href="mailto:admin@jovexalabs.com?subject=Website%20feedback">admin@jovexalabs.com</a> with:</p>

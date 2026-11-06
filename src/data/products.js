@@ -44,15 +44,15 @@ export const products = [
     projectPath: '/products/digital2030',
     capabilities: [
       'Explore existing Jovexa Learn lessons without an account.',
-      'Find official Philippine agency homepages; links are not agency integrations.',
+      'Find official national government portals; links are not agency integrations.',
       'Check text for heuristic warning signs without opening submitted URLs.',
       'Create local business-plan outlines, quotation drafts, and invoice drafts.',
     ],
     limitations: [
       'Live AI, accounts, administration, and cloud synchronization are unavailable.',
-      'No PHBIN issuance, private-document upload, or business verification is provided.',
+      'No business identifier issuance, private-document upload, or business verification is provided.',
       'Warning checks cannot certify that a message is safe or fraudulent.',
-      'Business drafts are not BIR-authorized tax invoices or professional advice.',
+      'Business drafts are not official tax invoices or professional advice.',
       'This is not a government, UN, or World Bank program or endorsed service.',
     ],
   },

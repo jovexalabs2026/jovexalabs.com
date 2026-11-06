@@ -94,8 +94,9 @@ export default function Contact() {
       <section className="section section--narrow">
         <h2>Business information</h2>
         <p>
-          Jovexa Labs operates under <strong>Jovexa Software Development Services</strong>, a
-          registered software development business based in the Philippines.
+          Jovexa Labs operates under <strong>Jovexa Software Development Services</strong>, an
+          independent software development studio. We work remotely with clients and partners
+          worldwide, and all inquiries are handled by email.
         </p>
       </section>
     </>

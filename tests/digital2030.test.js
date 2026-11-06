@@ -6,7 +6,7 @@ import { businessPlan, documentTotal } from '../src/lib/digital2030/business.js'
 import { publicServices } from '../src/lib/digital2030/services.js';
 import { products } from '../src/data/products.js';
 
-test('business arithmetic uses integer centavos and rejects invalid inputs', () => {
+test('business arithmetic uses integer minor units and rejects invalid inputs', () => {
   assert.equal(documentTotal('3', '0.10').cents, 30);
   assert.equal(documentTotal('2', '1234.56').cents, 246912);
   for (const [quantity, price] of [['0', '1'], ['1.5', '2'], ['1', '-1'], ['1', '1.001']]) {
@@ -14,6 +14,21 @@ test('business arithmetic uses integer centavos and rejects invalid inputs', () 
   }
   assert.match(businessPlan('Demo', 'Fictional audience', 'Websites'), /not guaranteed returns/);
   assert.throws(() => businessPlan('', 'customer', 'offer'));
+});
+
+test('document totals default to USD and accept any well-formed currency code', () => {
+  const usd = documentTotal('3', '0.10');
+  assert.equal(usd.currency, 'USD');
+  assert.match(usd.formatted, /USD/);
+  assert.match(usd.formatted, /0\.30/);
+  const euro = documentTotal('2', '1234.56', 'eur');
+  assert.equal(euro.currency, 'EUR');
+  assert.match(euro.formatted, /EUR/);
+  assert.match(euro.formatted, /2,469\.12/);
+  assert.match(documentTotal('1', '0.30', 'JPY').formatted, /0\.30/);
+  for (const currency of ['', 'US', 'US$', 'DOLLARS', '123']) {
+    assert.throws(() => documentTotal('1', '1', currency));
+  }
 });
 
 test('safety checks never fetch submitted URLs and avoid safety guarantees', () => {
@@ -28,12 +43,15 @@ test('safety checks never fetch submitted URLs and avoid safety guarantees', () 
   } finally { globalThis.fetch = original; }
 });
 
-test('directory is limited to official HTTPS homepage destinations', () => {
-  assert.equal(publicServices.length, 8);
+test('directory is limited to official HTTPS government portal homepages', () => {
+  // Government second-level labels (gov.uk, go.jp, govt.nz, usa.gov) plus the official EU portal.
+  const officialHost = /(^|\.)(gov|govt|go)(\.[a-z]{2})?$|^europa\.eu$/;
+  assert.equal(publicServices.length, 11);
+  assert.equal(new Set(publicServices.map((service) => service.name)).size, publicServices.length);
   for (const service of publicServices) {
     const url = new URL(service.url);
     assert.equal(url.protocol, 'https:');
-    assert.ok(url.hostname.endsWith('.gov.ph'));
+    assert.match(url.hostname, officialHost, `${service.name}: ${url.hostname}`);
     assert.equal(url.pathname, '/');
   }
 });
@@ -43,7 +61,7 @@ test('limited-release source clearly excludes private production features and fa
   assert.match(source, /Live AI is unavailable/);
   assert.match(source, /not a UN, World Bank/);
   assert.match(source, /no account system or centralized usage tracking/);
-  assert.match(source, /No PHBIN is issued/);
+  assert.match(source, /No business identifiers are issued/);
   assert.doesNotMatch(source, /dangerouslySetInnerHTML/);
 });
 
@@ -64,5 +82,5 @@ test('public web project guides use unique canonical paths and disclose limitati
     assert.ok(product.limitations.length > 0);
     assert.ok(product.link.startsWith('/'));
   }
-  assert.match(webProjects.find((product) => product.slug === 'digital2030').limitations.join(' '), /No PHBIN issuance/);
+  assert.match(webProjects.find((product) => product.slug === 'digital2030').limitations.join(' '), /No business identifier issuance/);
 });

@@ -40,7 +40,7 @@ export default function WebsiteDevelopment() {
         <ul className="list">
           <li>Written scope, price, deliverables, exclusions, and timing agreed before work starts</li>
           <li>Responsive, accessible design with practical handover guidance</li>
-          <li>International inquiries welcome; service provider is based in the Philippines</li>
+          <li>Remote-first delivery for clients worldwide, with written communication across time zones</li>
           <li>Third-party subscriptions and applicable taxes are identified separately</li>
         </ul>
         <h2>Frequently asked questions</h2>

@@ -39,8 +39,10 @@ test('business and safety inputs stay local and produce bounded truthful output'
   await page.getByLabel('Customer / target audience').fill('Fictional customer');
   await page.getByLabel('Product or service').fill('Demo only');
   await page.getByLabel('Quantity', { exact: true }).fill('3');
-  await page.getByLabel('Unit price (PHP)').fill('0.10');
+  await page.getByLabel('Unit price', { exact: true }).fill('0.10');
+  await page.getByLabel('Currency code').fill('EUR');
   await page.getByRole('button', { name: 'Generate locally' }).click();
+  await expect(page.locator('.digital-draft')).toContainText('EUR');
   await expect(page.locator('.digital-draft')).toContainText('0.30');
   expect(outbound).toEqual([]);
   await page.goto('/digital2030/cybersecurity');
@@ -121,7 +123,7 @@ test('developer guides, project details and roadmap are connected and reloadable
     await page.setViewportSize({ width: 390, height: 900 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
-  await expect(page.locator('main')).toContainText('No PHBIN issuance');
+  await expect(page.locator('main')).toContainText('No business identifier issuance');
   await page.goto('/roadmap');
   await expect(page.getByRole('heading', { name: 'Growth milestone: developer resources' })).toBeVisible();
   await page.goto('/products/constructor');

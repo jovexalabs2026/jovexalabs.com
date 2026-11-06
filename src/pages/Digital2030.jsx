@@ -7,10 +7,10 @@ import { businessPlan, documentTotal } from '../lib/digital2030/business.js';
 import { publicServices } from '../lib/digital2030/services.js';
 
 const modules = [
-  ['', 'Overview', 'Practical digital skills and tools for Filipinos.'],
+  ['', 'Overview', 'Practical digital skills and tools for everyone.'],
   ['/ai', 'AI guidance', 'Learn how to use AI responsibly. Live AI is not available in this release.'],
   ['/education', 'Education', 'Explore existing free courses and device-only learning progress.'],
-  ['/services', 'Public services', 'Find official Philippine government agency websites.'],
+  ['/services', 'Public services', 'Find official national government portals.'],
   ['/cybersecurity', 'Online safety', 'Check message and link warning signs without opening suspicious destinations.'],
   ['/business', 'Business tools', 'Prepare business plans and quotation or invoice drafts locally.'],
   ['/impact', 'Activity', 'Understand what this release measures, and what it does not.'],
@@ -19,7 +19,7 @@ const modules = [
 export function DigitalLayout() {
   return <>
     <div className="digital-notice" role="note">
-      Public tools release: no login, live AI, account sync, PHBIN issuance, private documents, or administration.
+      Public tools release: no login, live AI, account sync, business verification, private documents, or administration.
     </div>
     <nav className="digital-nav" aria-label="Digital 2030">
       {modules.map(([path, label]) => <NavLink key={path} to={`/digital2030${path}`} end={path === ''}>{label}</NavLink>)}
@@ -27,7 +27,7 @@ export function DigitalLayout() {
     <Outlet />
     <aside className="section section--narrow fine-print">
       Jovexa Digital 2030 is an independent Jovexa Labs initiative. It is not a UN, World Bank,
-      or Philippine government program. No endorsement, funding, accreditation, or partnership is implied.
+      or government program. No endorsement, funding, accreditation, or partnership is implied.
       Public use is not evidence of verified social impact.
     </aside>
   </>;
@@ -35,12 +35,12 @@ export function DigitalLayout() {
 
 export function DigitalHome() {
   return <>
-    <Seo title="Jovexa Digital 2030" description="Independent digital education and browser-only tools for Filipinos, businesses, schools, and communities." path="/digital2030" />
+    <Seo title="Jovexa Digital 2030" description="Independent digital education and browser-only tools for individuals, businesses, schools, and communities worldwide." path="/digital2030" />
     <section className="section">
       <p className="eyebrow">Jovexa Digital 2030</p>
       <h1>Practical technology. More opportunities.</h1>
       <p className="hero__lead">Accessible learning and useful digital tools, operated by
-        JOVEXA SOFTWARE DEVELOPMENT SERVICES under the Jovexa Labs brand.</p>
+        Jovexa Software Development Services under the Jovexa Labs brand.</p>
       <p>This public release works without an account. Private business verification and account-backed
         services are not being launched here. Your existing Jovexa Labs products and learning pages remain available.</p>
       <div className="grid grid--three">
@@ -63,12 +63,8 @@ export function DigitalAI() {
         <li>State your goal, audience, and desired format. Use fictional examples instead of personal records.</li>
         <li>Never submit passwords, OTPs, personal IDs, private documents, or customer information.</li>
         <li>Models can invent facts and sources. Verify important answers independently.</li>
-        <li>Confirm current requirements through <Link to="/digital2030/services">official agencies</Link>.</li>
+        <li>Confirm current requirements through <Link to="/digital2030/services">official government portals</Link>.</li>
       </ul>
-      <h2>Filipino / Tagalog</h2><p lang="fil">Maaaring magkamali ang AI. Suriin ang mahalagang impormasyon
-        sa opisyal na pinagmulan. Huwag ibahagi ang password, OTP, o pribadong dokumento.</p>
-      <h2>Cebuano / Bisaya</h2><p lang="ceb">Mahimong masayop ang AI. Susiha ang importanteng impormasyon
-        sa opisyal nga tinubdan. Ayaw ipaambit ang password, OTP, o pribadong dokumento.</p>
     </section>
   </>;
 }
@@ -97,19 +93,23 @@ export function DigitalEducation() {
 
 export function DigitalServices() {
   return <>
-    <Seo title="Official public services directory" description="Links to official Philippine government agency homepages, without collecting government credentials." path="/digital2030/services" />
+    <Seo title="Official public services directory" description="Links to official national government portals, without collecting government credentials." path="/digital2030/services" />
     <section className="section">
       <p className="eyebrow">Official destinations</p><h1>Find the right public service.</h1>
-      <p>These are links, not government integrations. Confirm requirements, fees, and eligibility
-        directly with the agency. Never enter government passwords or OTPs on Jovexa Labs.</p>
+      <p>These are links to official national portals, not government integrations. Start from your
+        country's portal to locate business-registration, tax, and consumer-protection agencies, then
+        confirm requirements, fees, and eligibility directly with the agency. Never enter government
+        passwords or OTPs on Jovexa Labs.</p>
       <div className="grid grid--two">
         {publicServices.map((service) => <article className="card" key={service.name}>
           <h2>{service.name}</h2><p>{service.description}</p>
           <a href={service.url} target="_blank" rel="noopener noreferrer">{service.url} (official site, new tab)</a>
         </article>)}
       </div>
-      <p className="fine-print">Directory source review: 24 October 2026.
-        Agency uptime and current service availability are not guaranteed.</p>
+      <p>If your country is not listed, search for its official national portal and check that the
+        address belongs to a government domain before entering any information.</p>
+      <p className="fine-print">Directory source review: 6 November 2026.
+        Portal uptime and current service availability are not guaranteed.</p>
     </section>
   </>;
 }
@@ -154,11 +154,11 @@ export function DigitalBusiness() {
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
   return <>
-    <Seo title="Digital business tools" description="Browser-only business plan, invoice, and quotation drafts with PHP calculations." path="/digital2030/business" />
+    <Seo title="Digital business tools" description="Browser-only business plan, invoice, and quotation drafts in the currency you choose." path="/digital2030/business" />
     <section className="section section--narrow">
       <p className="eyebrow">Digital business center</p><h1>Turn an idea into a practical next step.</h1>
       <p>Inputs stay in this browser and are not saved. Templates are not AI, legal advice, or
-        BIR-authorized tax invoices. No PHBIN is issued through these tools.</p>
+        official tax invoices. No business identifiers are issued through these tools.</p>
       <form className="card digital-form" onSubmit={(event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -166,8 +166,8 @@ export function DigitalBusiness() {
         try {
           if (field('kind') === 'plan') setOutput(businessPlan(field('business'), field('customer'), field('offer')));
           else {
-            const total = documentTotal(field('quantity'), field('price'));
-            setOutput(`${field('kind') === 'invoice' ? 'INVOICE DRAFT' : 'QUOTATION DRAFT'}\n${field('business')}\nFor: ${field('customer')}\n${field('offer')}\nQuantity: ${field('quantity')}\nUnit price: PHP ${field('price')}\nTotal: ${total.formatted}\n\nPlanning document only. Not a BIR-authorized tax invoice. Confirm applicable invoicing and tax rules.`);
+            const total = documentTotal(field('quantity'), field('price'), field('currency'));
+            setOutput(`${field('kind') === 'invoice' ? 'INVOICE DRAFT' : 'QUOTATION DRAFT'}\n${field('business')}\nFor: ${field('customer')}\n${field('offer')}\nQuantity: ${field('quantity')}\nUnit price: ${total.currency} ${field('price')}\nTotal: ${total.formatted}\n\nPlanning document only. Not an official tax invoice. Confirm the invoicing and tax rules that apply in your jurisdiction.`);
           }
           setError('');
         } catch (failure) { setOutput(''); setError(failure.message); }
@@ -178,7 +178,8 @@ export function DigitalBusiness() {
         {[['business', 'Business name'], ['customer', 'Customer / target audience'], ['offer', 'Product or service']].map(([name, label]) =>
           <label key={name}>{label}<input name={name} required maxLength={500} /></label>)}
         <label>Quantity<input name="quantity" type="number" min="1" max="99999" step="1" defaultValue="1" required /></label>
-        <label>Unit price (PHP)<input name="price" type="number" min="0" max="99999999.99" step="0.01" defaultValue="0" required /></label>
+        <label>Unit price<input name="price" type="number" min="0" max="99999999.99" step="0.01" defaultValue="0" required /></label>
+        <label>Currency code<input name="currency" defaultValue="USD" maxLength={3} pattern="[A-Za-z]{3}" title="Three-letter currency code, such as USD or EUR" required /></label>
         <button type="submit" className="btn btn--primary">Generate locally</button>
         {error && <p role="alert">{error}</p>}
       </form>
@@ -192,8 +193,8 @@ export function DigitalBusiness() {
         'Keep business records backed up and test recovery.',
         'Make truthful marketing claims without unearned endorsements.'].map((text) =>
         <label className="digital-check" key={text}><input type="checkbox" />{text}</label>)}
-      <p className="fine-print">Checklist selections are temporary. PHBIN is an independent Jovexa Labs
-        identifier, not a government-issued identifier or a D-U-N-S number. Business verification is not launched in this release.</p>
+      <p className="fine-print">Checklist selections are temporary. Business verification and business
+        identifiers are not launched in this release.</p>
       <Link to="/digital2030/services">Find official registration information</Link>
     </section>
   </>;
@@ -209,7 +210,7 @@ export function DigitalActivity() {
       <dl className="digital-metrics">
         <div className="card"><dt>Published course resources</dt><dd>{courses.length}</dd></div>
         <div className="card"><dt>Published lessons</dt><dd>{totalLessons()}</dd></div>
-        <div className="card"><dt>Listed official agency homepages</dt><dd>{publicServices.length}</dd></div>
+        <div className="card"><dt>Listed official government portals</dt><dd>{publicServices.length}</dd></div>
       </dl>
       <p>These counts are calculated from the published catalog. They are not user activity or
         verified real-world social impact. Device-only progress is not aggregated.</p>

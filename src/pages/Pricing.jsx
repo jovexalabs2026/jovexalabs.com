@@ -67,9 +67,9 @@ export default function Pricing() {
           products, platform fees, and provider eligibility are confirmed in the project scope.
         </p>
         <p>
-          Prices are shown in USD. No PHP conversion or live exchange rate is currently displayed.
-          Quotes and invoices will state the agreed currency, payment milestones, taxes, and any
-          provider charges. The proposed 50% start / 50% before final handover arrangement is
+          Prices are shown in USD. No local-currency conversion or live exchange rate is currently
+          displayed. Quotes and invoices will state the agreed currency, payment milestones, taxes,
+          and any provider charges. The proposed 50% start / 50% before final handover arrangement is
           confirmed per project; larger work may use written milestones.
         </p>
         <p>
@@ -78,7 +78,7 @@ export default function Pricing() {
         </p>
         <p className="fine-print">
           Service descriptions and policies are launch drafts and require review by qualified
-          Philippine legal and tax professionals before they are relied upon.
+          legal and tax professionals in the relevant jurisdiction before they are relied upon.
         </p>
         {import.meta.env.VITE_JOVEXA_SIMULATION === 'true' && (
           <p className="form-notice">Local simulation values can be changed in the administrator workspace. These do not change production prices.</p>

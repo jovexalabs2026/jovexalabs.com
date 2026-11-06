@@ -66,8 +66,8 @@ export default function Footer() {
           </p>
           <p className="site-footer__tagline">Jovexa Labs Digital Solutions</p>
           <p className="site-footer__tagline">
-            An independent software studio and Philippine-based provider of website and software
-            development services.
+            An independent software studio delivering websites, software, and digital solutions
+            to clients worldwide.
           </p>
         </div>
 
@@ -91,16 +91,12 @@ export default function Footer() {
 
       <div className="site-footer__bottom">
         <p className="site-footer__copy">
-          Client services are provided by Jovexa Software Development Services in the Philippines.
-          Quotes and timelines are confirmed in writing; third-party and applicable tax costs may
-          apply.
+          Client services are provided by Jovexa Software Development Services. Quotes and
+          timelines are confirmed in writing; third-party and applicable tax costs may apply.
         </p>
         <p className="site-footer__copy">
           &copy; {new Date().getFullYear()} Jovexa Software Development Services. All rights
           reserved.
-        </p>
-        <p className="site-footer__copy">
-          DTI-registered business in the Philippines · Reg. Ref. EVQM270119612369
         </p>
         <p className="site-footer__copy">
           <a href="mailto:admin@jovexalabs.com">admin@jovexalabs.com</a> ·{' '}

@@ -52,17 +52,11 @@ export default function About() {
           carefully, and turn them into software that people can actually use and enjoy.
         </p>
         <p>
-          Operating under <strong>Jovexa Software Development Services</strong>, a registered
-          software development business, we work across mobile applications, games, web platforms,
-          educational technology, open-source projects, and developer tools. Our flagship product,{' '}
+          Operating under <strong>Jovexa Software Development Services</strong>, we work across
+          mobile applications, games, web platforms, educational technology, open-source projects,
+          and developer tools for clients and users around the world. Our flagship product,{' '}
           <Link to="/products/dash-rush">Dash Rush: Endless Run &amp; Jump</Link>, is currently
           preparing for release on Google Play.
-        </p>
-        <p className="fine-print">
-          Jovexa Software Development Services is registered with the Department of Trade and
-          Industry (DTI) of the Philippines, Business Name Registration Ref. EVQM270119612369. You
-          can verify business name registrations through the official DTI Business Name Registration
-          System.
         </p>
       </section>
 
