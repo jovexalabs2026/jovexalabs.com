@@ -25,6 +25,10 @@ import ProjectDetails from './pages/ProjectDetails.jsx';
 import Contact from './pages/Contact.jsx';
 import Privacy from './pages/Privacy.jsx';
 import Terms from './pages/Terms.jsx';
+import JovexaNetworkPrivacy from './pages/JovexaNetworkPrivacy.jsx';
+import JovexaNetworkTerms from './pages/JovexaNetworkTerms.jsx';
+import JovexaNetworkParticipation from './pages/JovexaNetworkParticipation.jsx';
+import JovexaNetworkAccountDeletion from './pages/JovexaNetworkAccountDeletion.jsx';
 import NotFound from './pages/NotFound.jsx';
 import { DigitalLayout, DigitalHome, DigitalAI, DigitalEducation, DigitalServices,
   DigitalSafety, DigitalBusiness, DigitalActivity } from './pages/Digital2030.jsx';
@@ -88,6 +92,16 @@ export default function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />
+        <Route path="apps/jovexa-network/privacy" element={<JovexaNetworkPrivacy />} />
+        <Route path="apps/jovexa-network/terms" element={<JovexaNetworkTerms />} />
+        <Route
+          path="apps/jovexa-network/participation-and-ads"
+          element={<JovexaNetworkParticipation />}
+        />
+        <Route
+          path="apps/jovexa-network/account-deletion"
+          element={<JovexaNetworkAccountDeletion />}
+        />
         <Route path="digital2030" element={<DigitalLayout />}>
           <Route index element={<DigitalHome />} />
           <Route path="ai" element={<DigitalAI />} />

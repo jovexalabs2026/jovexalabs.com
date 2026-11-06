@@ -17,6 +17,11 @@ export default function Privacy() {
           connection with this website and Jovexa applications, including Dash Rush: Endless Run
           &amp; Jump.
         </p>
+        <p>
+          For product-specific information, read the{' '}
+          <a href="/apps/jovexa-network/privacy">Jovexa Network Privacy Notice</a> and use the{' '}
+          <a href="/apps/jovexa-network/account-deletion">Jovexa Network account-deletion page</a>.
+        </p>
 
         <h2>Information We Collect</h2>
         <p>
@@ -32,6 +37,11 @@ export default function Privacy() {
           contents. If you open and send the draft, your email provider and our business mailbox
           process that message under their respective systems and policies. Do not include
           passwords, payment details, identity documents, or other sensitive information.
+        </p>
+        <p>
+          The Jovexa Network account-deletion request page also prepares an email draft in your
+          mail app. The static website does not transmit or store that request; it is received
+          only if you send the message.
         </p>
         <p>
           When the optional localhost simulation is deliberately started by a developer, the

@@ -16,6 +16,11 @@ export default function Terms() {
           These Terms of Service ("Terms") govern your use of the Jovexa Labs website and Jovexa
           applications, games, and software products (collectively, the "Services").
         </p>
+        <p>
+          The Jovexa Network app has additional{' '}
+          <a href="/apps/jovexa-network/terms">product-specific terms</a> and a{' '}
+          <a href="/apps/jovexa-network/participation-and-ads">participation and ads policy</a>.
+        </p>
 
         <h2>Acceptance of Terms</h2>
         <p>

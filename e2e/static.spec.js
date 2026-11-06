@@ -5,7 +5,10 @@ test('corporate and Digital 2030 deep links survive reload', async ({ page }) =>
   page.on('pageerror', (error) => errors.push(error.message));
   for (const route of ['/', '/products', '/products/dash-rush', '/learn', '/digital2030',
     '/digital2030/ai', '/digital2030/education', '/digital2030/services',
-    '/digital2030/cybersecurity', '/digital2030/business', '/digital2030/impact']) {
+    '/digital2030/cybersecurity', '/digital2030/business', '/digital2030/impact',
+    '/apps/jovexa-network/privacy', '/apps/jovexa-network/terms',
+    '/apps/jovexa-network/participation-and-ads',
+    '/apps/jovexa-network/account-deletion']) {
     const response = await page.goto(route);
     expect(response.status()).toBe(process.env.STATIC_HOST === 'github' && route !== '/' ? 404 : 200);
     await expect(page.locator('h1')).toBeVisible();

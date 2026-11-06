@@ -51,6 +51,10 @@ const COLUMNS = [
     links: [
       { to: '/privacy', label: 'Privacy Policy' },
       { to: '/terms', label: 'Terms of Service' },
+      { to: '/apps/jovexa-network/privacy', label: 'Jovexa Network Privacy' },
+      { to: '/apps/jovexa-network/terms', label: 'Jovexa Network Terms' },
+      { to: '/apps/jovexa-network/participation-and-ads', label: 'Jovexa Network Ads Policy' },
+      { to: '/apps/jovexa-network/account-deletion', label: 'Jovexa Network Account Deletion' },
     ],
   },
 ];
