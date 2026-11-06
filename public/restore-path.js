@@ -3,6 +3,7 @@ const params = new URLSearchParams(window.location.search);
 const redirectedPath = params.get('p');
 if (redirectedPath !== null) {
   params.delete('p');
+  params.delete('_redirect');
   const rest = params.toString();
   const newUrl = window.location.pathname.replace(/\/$/, '') +
     '/' + redirectedPath + (rest ? '?' + rest : '') + window.location.hash;

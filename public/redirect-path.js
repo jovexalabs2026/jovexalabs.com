@@ -1,7 +1,10 @@
-// Preserve query parameters inside the encoded path until the app restores the URL.
+// Bypass a cached root fallback so new deep links load the current app bundle.
 const locationToRestore = window.location;
-locationToRestore.replace(
-  locationToRestore.origin + '/?p=' +
-  encodeURIComponent(locationToRestore.pathname.slice(1) + locationToRestore.search) +
-  locationToRestore.hash
+const redirectURL = new URL('/', locationToRestore.origin);
+redirectURL.searchParams.set(
+  'p',
+  locationToRestore.pathname.slice(1) + locationToRestore.search,
 );
+redirectURL.searchParams.set('_redirect', Date.now().toString());
+redirectURL.hash = locationToRestore.hash;
+locationToRestore.replace(redirectURL);

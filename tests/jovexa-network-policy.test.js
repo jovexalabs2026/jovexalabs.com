@@ -47,3 +47,11 @@ test('external account deletion request identifies its email-only behavior', () 
   assert.match(deletion, /verify that you control the\s+account/);
   assert.match(deletion, /Google or other\s+independent\s+providers/);
 });
+
+test('GitHub Pages deep-link restoration avoids cached root fallbacks', () => {
+  const redirect = read('../public/redirect-path.js');
+  const restore = read('../public/restore-path.js');
+
+  assert.match(redirect, /searchParams\.set\('_redirect', Date\.now\(\)\.toString\(\)\)/);
+  assert.match(restore, /params\.delete\('_redirect'\)/);
+});
