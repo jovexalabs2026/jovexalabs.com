@@ -80,8 +80,12 @@ test('actual World Bank and leadership requests expose real results or explicit 
   await selectPhilippines(page);
   await page.getByRole('button', { name: 'Load country data', exact: true }).click();
   await expect(page.getByText('Last retrieval attempt:', { exact: false })).toBeVisible({ timeout: 30_000 });
-  await expect(page.locator('.atlas-country-stat').first()).toContainText('Reference year:');
-  await expect(page.locator('.atlas-country-stat').nth(1)).toContainText('Reference year:');
+  // Each World Bank indicator shows its reference year, or an explicit failure when the API cannot
+  // be reached from where the test runs; it never shows an invented figure.
+  for (const index of [0, 1]) {
+    const stat = page.locator('.atlas-country-stat').nth(index);
+    await expect(stat.getByText('Reference year:', { exact: false }).or(stat.getByRole('alert'))).toBeVisible();
+  }
   // Leadership availability is independent; never replace a rate-limit error with an invented office holder.
   const leaders = page.locator('.atlas-country-stat').nth(2);
   const available = await leaders.locator('article').count();
