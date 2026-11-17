@@ -1,0 +1,15 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jovexalabs.move",
+      "sha256_cert_fingerprints": [
+        "B9:77:BE:BC:75:A5:EF:A4:65:D0:85:2B:B1:89:4A:01:AE:F2:29:7D:D3:C3:B9:72:5B:2B:F6:F3:4C:87:A2:A0",
+        "85:F9:63:41:27:C0:EF:CA:CF:F5:07:20:57:58:25:F8:8B:42:19:AC:6F:27:27:AC:96:36:A0:56:F7:8E:23:A2",
+        "94:03:8B:92:BE:B7:91:0E:C5:59:96:85:AF:E1:E1:8C:31:9F:A3:34:E0:7F:CA:C1:15:FF:27:F9:2D:06:62:04",
+        "B7:93:BF:27:1E:39:CF:9A:0E:35:62:1D:9A:01:C4:D8:DB:14:57:CA:48:16:62:3D:9E:40:CA:A3:34:14:E7:BF"
+      ]
+    }
+  }
+]

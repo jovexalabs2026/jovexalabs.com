@@ -15,3 +15,8 @@ th, td { border: 1px solid #23395c; padding: 10px; text-align: left; vertical-al
 th { background: #0d2140; }
 .table-wrap { overflow-x: auto; }
 footer { margin-top: 56px; color: #b6c3d6; font-size: 14px; }
+[hidden] { display: none !important; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+.button { display: inline-block; padding: 12px 22px; border: 1px solid #25d9ef; border-radius: 999px; background: #25d9ef; color: #071329; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+.button.secondary { background: transparent; color: #6ce5f4; border-color: #6ce5f4; }
+.code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; overflow-wrap: anywhere; }

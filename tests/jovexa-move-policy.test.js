@@ -31,3 +31,14 @@ test('Jovexa Move disclosures that Google Play reviews are present', () => {
   assert.match(deletion, /type <strong>DELETE<\/strong>/);
   assert.match(deletion, /does not cancel/);
 });
+
+test('Android App Links file names the app and well-formed signing certificates', () => {
+  const [statement] = JSON.parse(read('../public/.well-known/assetlinks.json'));
+  assert.deepEqual(statement.relation, ['delegate_permission/common.handle_all_urls']);
+  assert.equal(statement.target.namespace, 'android_app');
+  assert.equal(statement.target.package_name, 'com.jovexalabs.move');
+  assert.ok(statement.target.sha256_cert_fingerprints.length > 0);
+  for (const fingerprint of statement.target.sha256_cert_fingerprints) {
+    assert.match(fingerprint, /^([0-9A-F]{2}:){31}[0-9A-F]{2}$/);
+  }
+});

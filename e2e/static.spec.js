@@ -187,3 +187,21 @@ test('public contributions do not require private repository access or grant a s
   await expect(page.locator('main')).toContainText('all-rights-reserved license');
   await expect(page.locator('main')).toContainText('not an authenticated API');
 });
+
+test.describe('Jovexa Move invitation page on an Android phone', () => {
+  test.use({ userAgent: 'Mozilla/5.0 (Linux; Android 16; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Mobile Safari/537.36' });
+
+  test('opens a valid invitation in the app and explains an incomplete one', async ({ page }) => {
+    const errors = [];
+    page.on('pageerror', (error) => errors.push(error.message));
+    await page.goto('/move/join.html?code=AbCdEfGh_IjKl-MnOpQrSt');
+    await expect(page.locator('#link')).toHaveText('https://jovexalabs.com/move/join?code=AbCdEfGh_IjKl-MnOpQrSt');
+    await expect(page.getByRole('link', { name: 'Open in Jovexa Move' })).toHaveAttribute('href',
+      /^intent:\/\/jovexalabs\.com\/move\/join\?code=AbCdEfGh_IjKl-MnOpQrSt#Intent;scheme=https;package=com\.jovexalabs\.move;S\.browser_fallback_url=https%3A%2F%2Fplay\.google\.com%2F/);
+    await page.goto('/move/join.html?code=%22%3E%3Cimg%20src%3Dx%3E');
+    await expect(page.getByText('This invitation link is incomplete.')).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Open in Jovexa Move' })).toBeHidden();
+    await expect(page.locator('#invite')).toBeHidden();
+    expect(errors).toEqual([]);
+  });
+});
