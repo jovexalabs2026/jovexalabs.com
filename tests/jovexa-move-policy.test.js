@@ -26,10 +26,12 @@ test('Jovexa Move disclosures that Google Play reviews are present', () => {
   assert.match(privacy, /18 or over/);
   assert.match(privacy, /never asks for background location/);
   assert.match(privacy, /not end-to-end encrypted/);
+  assert.match(privacy, /<em>Open to battles<\/em> \(default off\)/);
   assert.match(guidelines, /zero tolerance for child sexual abuse and exploitation/);
   assert.match(guidelines, /National Center for Missing &amp; Exploited Children/);
   assert.match(deletion, /type <strong>DELETE<\/strong>/);
   assert.match(deletion, /does not cancel/);
+  assert.match(deletion, /Your step battles/);
 });
 
 test('Android App Links file names the app and well-formed signing certificates', () => {
